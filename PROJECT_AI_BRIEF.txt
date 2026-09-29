@@ -1,0 +1,222 @@
+================================================================================
+DEVKO PLATFORM — COMPLETE PROJECT BRIEF & CONTEXT FOR AI MODELS
+================================================================================
+Last Updated: 2026-09-29
+Platform Name: DevKo (devko-platform)
+Repository: https://github.com/chetan6752/hack.git
+Live Dev Server: http://localhost:5173
+
+--------------------------------------------------------------------------------
+1. EXECUTIVE SUMMARY & CORE MISSION
+--------------------------------------------------------------------------------
+DevKo is an independent, high-performance financial policy discovery and eligibility
+intelligence platform. It allows citizens, entrepreneurs, and MSME business owners
+to search, evaluate, and navigate financial schemes, government subsidies, and
+business grants.
+
+CRITICAL IDENTITY & CONSTRAINTS:
+- 100% INDEPENDENT: DevKo is NOT an assistant of the "myScheme" platform, nor is it
+  bound to or affiliated with any government agency or ministry. It operates
+  autonomously as a policy discovery engine.
+- ZERO AI HALLUCINATIONS: Eligibility decisions are evaluated using deterministic,
+  mathematical Boolean and AST (Abstract Syntax Tree) logic derived from official
+  public circulars. Generative AI is NEVER used to guess or hallucinate statutory
+  eligibility.
+- ZERO EVALUATION / HACKATHON JARGON: All hackathon evaluator banners, tour bars,
+  and judge-specific labels have been completely removed.
+- MODERN FINTECH DESIGN: Designed with an ultra-modern aesthetic inspired by modern
+  fintech apps (Stripe, Linear, Ramp) — faint green accents (#f0fdf4), crisp white
+  surfaces, subtle glassmorphism (backdrop-blur), smooth lift transitions, and
+  meticulous mobile responsiveness across all devices (360px to 4K).
+
+--------------------------------------------------------------------------------
+2. TECHNICAL ARCHITECTURE & STACK
+--------------------------------------------------------------------------------
+- Core Framework: React 18.3 (Single Page Application via Vite 5)
+- Routing: React Router v6.28 (15 unique routes with nested layouts)
+- Styling: Tailwind CSS v3.4 + Custom Tokens
+  - Font: Plus Jakarta Sans / Inter / JetBrains Mono
+  - Theme: Faint green backgrounds (#f8fafc / #f0fdf4), emerald accents (#15803d /
+    #059669), slate typography (#0f172a / #475569)
+  - Custom utilities: .glass-panel, .transition-lift, .glow-emerald
+- Icons: Lucide React (Clean vector iconography)
+- Data Visualization: Recharts (Progress bars, analytics charts)
+- State Management: React Context API (src/context/AppContext.jsx)
+  - Demo Persona management (Rahul Sharma - MSME Maharashtra)
+  - Live document state and 5-stage simulation pipeline
+  - Real-time notification center and bookmarking
+  - Active scheme filter states
+
+--------------------------------------------------------------------------------
+3. APPLICATION ROUTING & FEATURE MAP (15 ROUTES)
+--------------------------------------------------------------------------------
+1. Landing Page ("/") [src/pages/LandingPage.jsx]
+   - Modern glassmorphic top navigation with hamburger drawer on mobile.
+   - Ambient hero card with floating search bar, popular keyword chips, and
+     interactive demographic quick assessment tool.
+   - 4-column metric counter (4,700+ schemes, 28+ states, ₹2.45L benefits).
+   - 8 industry sector categories with 1-click scheme filtering.
+   - 4-step transparent process flow ("How DevKo Works").
+   - Featured opportunities with direct rule inspection CTAs.
+   - Interactive FAQ accordion addressing common eligibility questions.
+   - Independent platform footer with legal disclaimer.
+
+2. Citizen Sign In ("/login") [src/pages/LoginPage.jsx]
+   - Minimalist split-screen authentication.
+   - Left: Value propositions, deterministic guarantee, and trust signals.
+   - Right: Clean sign-in card with 1-click "Instant Demo Sign In" (Rahul Sharma).
+
+3. Citizen Dashboard ("/dashboard") [src/pages/DashboardPage.jsx]
+   - Executive welcome banner with estimated benefit highlight (₹2.45 Lakhs).
+   - 5 KPI StatCards (Potential Schemes, Eligible, Needs Review, Missing Docs,
+     Estimated Benefits) with mobile responsive wrapping and hover lift.
+   - "Recommended Schemes for You" section featuring top matched opportunities.
+   - Two-column split: Eligibility Status Stack breakdown + Pending Action Items.
+   - Recent verification milestone timeline.
+
+4. Find Schemes Directory ("/schemes") [src/pages/SchemesPage.jsx]
+   - Search bar with instant text matching across name, category, and department.
+   - Sort dropdown: Relevance, Benefit Amount, Fewest Missing Docs, Recent.
+   - Multi-facet filters: Status (Eligible, Potential, Review, Ineligible),
+     Government Level (Central, State & Central, District), and Category.
+   - SchemeCard grid with bookmarking, match percentage, and estimated benefits.
+
+5. Scheme Deep Dive ("/schemes/:id") [src/pages/SchemeDetailPage.jsx]
+   - 6-tab inspection layout:
+     Tab 1: Overview & objective
+     Tab 2: Eligibility Criteria & Rule-by-rule explainability with Gazette citations
+     Tab 3: Interactive Benefit Calculator with loan slider
+     Tab 4: Required vs Uploaded Documents checklist
+     Tab 5: Step-by-step Application Guide
+     Tab 6: Official Evidence & Gazette circular references
+
+6. Eligibility Decision Center ("/eligibility") [src/pages/EligibilityPage.jsx]
+   - 4 Pillar KPI cards (Eligible, Potentially Eligible, Manual Review, Ineligible).
+   - Master Scheme Evaluation Matrix with horizontal safety scroll for mobile.
+   - Clickable row drawer opening rule-by-rule Boolean explainability.
+   - Statutory classification logic guide.
+
+7. Documents Repository ("/documents") [src/pages/DocumentsPage.jsx]
+   - Overall Document Completeness progress tracker.
+   - Interactive 5-stage Document Uploader (Uploading -> OCR -> Fact Extraction
+     -> Parameter Verification -> Completed). Supports native file upload and presets.
+   - Category filter pills (Identity, Income, Business, Bank, Certificates).
+   - DocumentCard grid showing extracted key-value facts and confidence score.
+   - Side drawer inspecting parsed metadata and validity dates.
+
+8. Document Checklist & Gap Analysis ("/missing-documents") [src/pages/MissingDocsPage.jsx]
+   - Overall completion indicator.
+   - "What should I upload next?" section ranking missing documents by subsidy
+     unlock potential (e.g. CA Turnover Certificate unlocks ₹1.2L).
+   - Master document dossier audit table.
+
+9. Manual Review Center ("/review") [src/pages/ManualReviewPage.jsx]
+   - Caseworker adjudication queue for documents with ambiguity or outdated dates.
+   - Side-by-side evidence diff viewer (applicant uploaded proof vs statutory rule).
+   - Caseworker action console: Verify, Request Updated Doc, Escalate, Reject.
+
+10. Application Roadmap Guide ("/application-guide") [src/pages/ApplicationGuidePage.jsx]
+    - 8-stage step-by-step checklist to prepare flawless dossiers before applying
+      on official ministerial portals.
+    - Common mistakes warnings and prerequisite checklists.
+
+11. Status Tracking ("/tracking") [src/pages/TrackingPage.jsx]
+    - Multi-milestone application tracker matching PFMS and departmental stages.
+    - Active timeline stages (Submitted -> Desk Review -> Field Audit -> Approved
+      -> Disbursement Initiated).
+
+12. Applicant Profile & Parameters ("/profile") [src/pages/ProfilePage.jsx]
+    - Structured applicant dossier: Personal, Business, Financial, and Domicile.
+    - Parameter edit mode and one-click JSON export.
+
+13. Alerts & Activity Center ("/notifications") [src/pages/NotificationsPage.jsx]
+    - Real-time policy alerts, document expiry notices, and action requests.
+    - "Mark all as read" and direct shortcut navigation.
+
+14. Policy Admin Hub ("/admin") [src/pages/AdminSchemesPage.jsx]
+    - Administrative policy repository with rule AST viewer.
+    - Gazette notification library and circular metadata.
+
+15. System Architecture & Policy RAG Hub ("/architecture", "/rag-demo")
+    - End-to-end decoupled pipeline documentation: OCR -> RAG -> Deterministic AST
+      -> Human Review -> Official Portal.
+    - Interactive vector retrieval demo visualizing grounded semantic chunk retrieval.
+
+--------------------------------------------------------------------------------
+4. KEY DATA STRUCTURES (src/data/mockData.js)
+--------------------------------------------------------------------------------
+1. Applicant Profile (Rahul Sharma):
+   - Category: MSME Proprietor (Light Engineering & CNC Tooling)
+   - State: Maharashtra (Pune)
+   - Annual Turnover: ₹42,00,000 | Net Income: ₹3,80,000
+   - Udyam ID: UDYAM-MH-26-0049281 | GSTIN: 27ABCPS1234F1Z5
+   - Existing Loan: ₹15,00,000 Working Capital (HDFC Bank)
+
+2. Schemes (12 Curated Policies):
+   - MSME Interest Support Scheme (2% subvention, ₹75,000)
+   - Small Business Working Capital Subsidy (Margin grant, ₹1,20,000)
+   - PM Technology Upgradation Incentive (15% capital subsidy, ₹1,10,000)
+   - Startup India Seed Fund Assistance (Early-stage grant, ₹2,00,000)
+   - Stand-Up India Green Energy Subsidy (Clean energy loan subvention, ₹80,000)
+   - Credit Guarantee Fund Trust for Micro & Small Enterprises (CGTMSE)
+   - PMEGP Prime Minister Employment Generation Programme
+   - National SC/ST Hub Special Subvention
+   - Agriculture Infrastructure Modernization Fund
+   - Digital MSME Cloud & ERP Adoption Incentive
+   - PM Vishwakarma Artisan Credit Incentive
+   - Maharashtra State Industrial Development Incentive
+
+3. Documents (10 Dossier Files):
+   - Aadhaar Card, PAN Card, Udyam Registration Certificate, Income Certificate,
+     CA Turnover Audit Certificate, 6-Month Bank Statement, GST 3B Q1 Return,
+     Electricity Bill (Address Proof), Land Domicile Certificate, DPIIT Startup Proof.
+
+--------------------------------------------------------------------------------
+5. RECENT WORK & EVOLUTION HISTORY
+--------------------------------------------------------------------------------
+Phase 1: Redesign to faint green/white theme matching clean public portals.
+Phase 2: Built full-featured landing page, dashboard, and scheme directory.
+Phase 3: Complete removal of evaluation flow (HackathonTourBar removed) and
+         disassociation from government bondage / "myScheme assistant" claims.
+         Rebranded completely to DevKo.
+Phase 4: Full mobile responsiveness overhaul:
+         - Mobile navigation drawer in HeaderNav.
+         - Flex-col stacking on narrow screens for search and quick selector.
+         - StatCard padding and font scaling to prevent 2-column mobile clipping.
+         - Horizontal scroll protection with min-w constraints on data tables.
+Phase 5: Senior frontend audit & modernization:
+         - Added glassmorphic frosted navbar (bg-white/90 backdrop-blur-md).
+         - Added smooth hover lift micro-interactions (.transition-lift).
+         - Floating modern search bar with ambient shadow on landing page.
+         - Fixed all legacy text references (GovAssist -> DevKo, government databases
+           -> statutory policy rules).
+         - Verified with headless Chrome across all 15 routes (100% passed, 0 errors).
+         - Production build verified (npm run build succeeded with 0 errors).
+         - Code pushed to GitHub on branch `main`.
+
+--------------------------------------------------------------------------------
+6. DEVELOPER GUIDELINES FOR ANY AI WORKING ON THIS CODEBASE
+--------------------------------------------------------------------------------
+1. Brand Integrity:
+   - Always maintain the platform name as "DevKo" or "DevKo Schemes".
+   - NEVER introduce claims of being an official government portal, an assistant of
+     myScheme, or bound to any government department.
+   - Keep the independent platform disclaimer in footers and readmes.
+2. Aesthetics & Design:
+   - Keep the clean, modern aesthetic: crisp white cards, faint emerald backgrounds
+     (#f0fdf4), slate typography, subtle borders (border-slate-200/80), and modern
+     badges.
+   - Avoid dated/clunky government portal look or harsh bright colors.
+   - Use .transition-lift on interactive cards and buttons.
+3. Mobile Responsiveness:
+   - Never use rigid widths like min-w-[280px] on parent cards without responsive
+     modifiers (use w-full sm:w-auto sm:min-w-[280px]).
+   - Always wrap wide tables in <div className="overflow-x-auto"> with
+     <table className="w-full min-w-[640px]"> so cells don't collapse.
+   - Use px-3 sm:px-6 for main containers to maximize mobile screen utilization.
+4. Deterministic Logic:
+   - Preserve the deterministic Boolean AST rule evaluation pattern in
+     src/data/mockData.js and src/components/schemes/RuleRow.jsx.
+5. Testing:
+   - Always run `npm run build` to verify zero TypeScript/JSX/bundling regressions.
+================================================================================
