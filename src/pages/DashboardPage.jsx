@@ -32,30 +32,35 @@ export const DashboardPage = () => {
 
   return (
     <div className="space-y-6 sm:space-y-8 animate-fade-in">
-      {/* Welcome Banner / Header (Clean DevKo Style) */}
-      <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-700 text-white p-4 sm:p-6 md:p-8 shadow-xs">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+      {/* Welcome Banner / Header (Modern DevKo Executive Style) */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-800 text-white p-5 sm:p-8 shadow-elevated border border-emerald-700/40">
+        {/* Ambient background glows */}
+        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none" />
+        <div className="absolute -left-10 -bottom-10 w-60 h-60 rounded-full bg-green-400/10 blur-2xl pointer-events-none" />
+
+        <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6 z-10">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-emerald-100 text-[11px] sm:text-xs font-semibold backdrop-blur-xs">
-              <Compass className="w-3.5 h-3.5 text-emerald-200" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-emerald-200 text-[11px] sm:text-xs font-semibold backdrop-blur-md border border-white/10 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <Compass className="w-3.5 h-3.5 text-emerald-300" />
               <span>DevKo Scheme Discovery Intelligence</span>
             </div>
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight">
               Good morning, {applicant.name}
             </h1>
-            <p className="text-xs sm:text-sm text-emerald-100 max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-emerald-100/90 max-w-xl leading-relaxed">
               Based on your registered MSME profile in <strong>{applicant.state}</strong>, you have verified assistance schemes ready for application.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0 pt-2 md:pt-0">
-            <div className="bg-white/10 backdrop-blur-xs rounded-xl sm:rounded-2xl px-3.5 py-2.5 sm:px-4 sm:py-3 border border-white/20 text-center flex-1 sm:flex-initial">
-              <span className="text-[10px] uppercase font-bold text-emerald-100 block">Estimated Benefit</span>
-              <span className="text-xl sm:text-2xl font-black text-white">₹2.45 Lakhs</span>
+          <div className="flex flex-wrap items-center gap-3 shrink-0 pt-1 md:pt-0">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl px-5 py-3.5 border border-white/20 text-center flex-1 sm:flex-initial shadow-lg">
+              <span className="text-[10px] uppercase font-bold text-emerald-200 tracking-wider block">Estimated Benefit</span>
+              <span className="text-2xl sm:text-3xl font-black text-white font-mono">₹2.45 Lakhs</span>
             </div>
             <button
               onClick={() => navigate('/schemes')}
-              className="w-full sm:w-auto rounded-xl bg-white text-emerald-800 hover:bg-emerald-50 px-4 sm:px-5 py-2.5 sm:py-3 text-xs font-bold transition-smooth shadow-sm flex items-center justify-center gap-2"
+              className="w-full sm:w-auto rounded-xl bg-white text-emerald-950 hover:bg-emerald-50 px-5 py-3 text-xs font-bold transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
               <span>Explore Schemes</span>
               <ArrowRight className="w-3.5 h-3.5" />

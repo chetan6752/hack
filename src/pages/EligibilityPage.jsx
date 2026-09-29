@@ -46,40 +46,52 @@ export const EligibilityPage = () => {
 
       {/* SUMMARY PANEL (4 Pillar Cards) */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
-        <div className="p-3.5 sm:p-5 rounded-2xl border border-emerald-200 bg-white shadow-xs">
-          <div className="flex items-center justify-between">
+        <div className="relative overflow-hidden p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 bg-white bg-gradient-to-r from-emerald-500/[0.07] via-transparent to-transparent shadow-xs transition-lift hover:shadow-card hover:border-emerald-300">
+          <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 to-green-400 rounded-l-2xl" />
+          <div className="flex items-center justify-between pl-1">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-800">Eligible</span>
-            <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <div className="p-1.5 rounded-lg bg-emerald-100/80 text-emerald-700">
+              <CheckCircle2 className="w-4 h-4" />
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{eligibleCount}</div>
-          <p className="text-[10px] sm:text-[11px] text-emerald-700 mt-0.5 sm:mt-1 font-medium">All rules verified & active</p>
+          <div className="text-2xl sm:text-3xl font-black font-mono text-emerald-950 mt-1.5 sm:mt-2 pl-1">{eligibleCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-emerald-700 mt-0.5 sm:mt-1 font-medium pl-1">All rules verified & active</p>
         </div>
 
-        <div className="p-3.5 sm:p-5 rounded-2xl border border-blue-200 bg-white shadow-xs">
-          <div className="flex items-center justify-between">
+        <div className="relative overflow-hidden p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 bg-white bg-gradient-to-r from-blue-500/[0.07] via-transparent to-transparent shadow-xs transition-lift hover:shadow-card hover:border-blue-300">
+          <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-400 rounded-l-2xl" />
+          <div className="flex items-center justify-between pl-1">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-800">Potential</span>
-            <HelpCircle className="w-4 h-4 text-blue-600" />
+            <div className="p-1.5 rounded-lg bg-blue-100/80 text-blue-700">
+              <HelpCircle className="w-4 h-4" />
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{potentialCount}</div>
-          <p className="text-[10px] sm:text-[11px] text-blue-700 mt-0.5 sm:mt-1 font-medium">Likely match, pending docs</p>
+          <div className="text-2xl sm:text-3xl font-black font-mono text-slate-900 mt-1.5 sm:mt-2 pl-1">{potentialCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-blue-700 mt-0.5 sm:mt-1 font-medium pl-1">Likely match, pending docs</p>
         </div>
 
-        <div className="p-3.5 sm:p-5 rounded-2xl border border-amber-200 bg-white shadow-xs">
-          <div className="flex items-center justify-between">
+        <div className="relative overflow-hidden p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 bg-white bg-gradient-to-r from-amber-500/[0.07] via-transparent to-transparent shadow-xs transition-lift hover:shadow-card hover:border-amber-300">
+          <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-amber-500 to-yellow-400 rounded-l-2xl" />
+          <div className="flex items-center justify-between pl-1">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-800">Review</span>
-            <AlertTriangle className="w-4 h-4 text-amber-600" />
+            <div className="p-1.5 rounded-lg bg-amber-100/80 text-amber-700">
+              <AlertTriangle className="w-4 h-4" />
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{reviewCount}</div>
-          <p className="text-[10px] sm:text-[11px] text-amber-700 mt-0.5 sm:mt-1 font-medium">Conflicting / outdated proof</p>
+          <div className="text-2xl sm:text-3xl font-black font-mono text-slate-900 mt-1.5 sm:mt-2 pl-1">{reviewCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-amber-700 mt-0.5 sm:mt-1 font-medium pl-1">Conflicting / outdated proof</p>
         </div>
 
-        <div className="p-3.5 sm:p-5 rounded-2xl border border-rose-200 bg-white shadow-xs">
-          <div className="flex items-center justify-between">
+        <div className="relative overflow-hidden p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 bg-white bg-gradient-to-r from-rose-500/[0.07] via-transparent to-transparent shadow-xs transition-lift hover:shadow-card hover:border-rose-300">
+          <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-rose-500 to-pink-400 rounded-l-2xl" />
+          <div className="flex items-center justify-between pl-1">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-800">Ineligible</span>
-            <XCircle className="w-4 h-4 text-rose-600" />
+            <div className="p-1.5 rounded-lg bg-rose-100/80 text-rose-700">
+              <XCircle className="w-4 h-4" />
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{ineligibleCount}</div>
-          <p className="text-[10px] sm:text-[11px] text-rose-700 mt-0.5 sm:mt-1 font-medium">Statutory criteria mismatch</p>
+          <div className="text-2xl sm:text-3xl font-black font-mono text-slate-900 mt-1.5 sm:mt-2 pl-1">{ineligibleCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-rose-700 mt-0.5 sm:mt-1 font-medium pl-1">Statutory criteria mismatch</p>
         </div>
       </div>
 

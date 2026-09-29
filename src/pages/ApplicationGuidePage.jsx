@@ -121,18 +121,19 @@ export const ApplicationGuidePage = () => {
       </div>
 
       {/* Target Scheme Banner */}
-      <div className="p-6 rounded-2xl border border-emerald-200 bg-emerald-50/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
-        <div>
+      <div className="relative overflow-hidden p-6 rounded-2xl border border-emerald-200/90 bg-gradient-to-r from-emerald-50/90 via-emerald-50/40 to-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div className="absolute left-0 top-0 bottom-0 w-2.5 bg-gradient-to-b from-emerald-500 to-green-400" />
+        <div className="pl-2">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">Selected Program Roadmap</span>
-          <h2 className="text-lg font-bold text-slate-900 mt-1">{scheme.name}</h2>
-          <p className="text-xs text-slate-600 mt-0.5">{scheme.department} • Benefit: {scheme.benefit}</p>
+          <h2 className="text-lg font-extrabold text-slate-900 mt-1">{scheme.name}</h2>
+          <p className="text-xs text-slate-600 mt-0.5">{scheme.department} • Benefit: <span className="font-mono font-bold text-emerald-700">{scheme.benefit}</span></p>
         </div>
 
         <a
           href={scheme.portalUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-5 py-3 shadow-xs transition-smooth shrink-0"
+          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900 text-white text-xs font-bold px-5 py-3 shadow-xs transition-smooth shrink-0"
         >
           <span>Open Official Portal</span>
           <ExternalLink className="w-4 h-4" />
@@ -148,15 +149,35 @@ export const ApplicationGuidePage = () => {
           return (
             <div
               key={s.step}
-              className={`rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs ${
+              className={`relative overflow-hidden rounded-2xl border transition-lift shadow-xs ${
                 isActive
-                  ? 'border-emerald-500 bg-white ring-2 ring-emerald-100'
+                  ? 'border-emerald-500/80 bg-white ring-2 ring-emerald-100/70 shadow-glow-mint'
                   : isCompleted
-                  ? 'border-slate-200 bg-white'
+                  ? 'border-slate-200 bg-white hover:border-emerald-300'
                   : 'border-slate-200 bg-slate-50/60'
               }`}
             >
-              <div className="p-5 sm:p-6 space-y-4">
+              {/* Luminous left accent line and ambient wash */}
+              <div
+                className={`absolute left-0 top-0 bottom-0 w-28 bg-gradient-to-r pointer-events-none ${
+                  isActive
+                    ? 'from-emerald-500/[0.09] via-emerald-500/[0.02] to-transparent'
+                    : isCompleted
+                    ? 'from-emerald-500/[0.04] to-transparent'
+                    : 'transparent'
+                }`}
+              />
+              <div
+                className={`absolute left-0 top-4 bottom-4 w-1.5 rounded-r-full shadow-xs ${
+                  isActive
+                    ? 'bg-gradient-to-b from-emerald-500 to-green-400'
+                    : isCompleted
+                    ? 'bg-emerald-500'
+                    : 'bg-slate-300'
+                }`}
+              />
+
+              <div className="relative z-10 p-5 sm:p-6 space-y-4 pl-6 sm:pl-7">
                 {/* Step Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex items-center gap-3.5">

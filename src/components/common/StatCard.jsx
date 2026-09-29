@@ -12,34 +12,52 @@ export const StatCard = ({
 }) => {
   const colorMap = {
     green: {
-      bg: 'bg-emerald-50 text-emerald-800 border-emerald-100',
-      activeRing: 'ring-2 ring-emerald-600',
-      iconBg: 'bg-emerald-100 text-emerald-700',
+      accent: 'from-emerald-500 to-green-400',
+      wash: 'from-emerald-500/[0.07]',
+      activeRing: 'ring-2 ring-emerald-500/80',
+      iconBg: 'bg-emerald-100/80 text-emerald-700',
+      valueColor: 'text-emerald-950',
+      borderHover: 'hover:border-emerald-300',
     },
     blue: {
-      bg: 'bg-blue-50 text-blue-800 border-blue-100',
-      activeRing: 'ring-2 ring-blue-600',
-      iconBg: 'bg-blue-100 text-blue-700',
+      accent: 'from-blue-500 to-indigo-400',
+      wash: 'from-blue-500/[0.07]',
+      activeRing: 'ring-2 ring-blue-500/80',
+      iconBg: 'bg-blue-100/80 text-blue-700',
+      valueColor: 'text-slate-900',
+      borderHover: 'hover:border-blue-300',
     },
     emerald: {
-      bg: 'bg-emerald-50 text-emerald-800 border-emerald-100',
-      activeRing: 'ring-2 ring-emerald-600',
-      iconBg: 'bg-emerald-100 text-emerald-700',
+      accent: 'from-emerald-500 to-teal-400',
+      wash: 'from-emerald-500/[0.07]',
+      activeRing: 'ring-2 ring-emerald-500/80',
+      iconBg: 'bg-emerald-100/80 text-emerald-700',
+      valueColor: 'text-emerald-900',
+      borderHover: 'hover:border-emerald-300',
     },
     amber: {
-      bg: 'bg-amber-50 text-amber-800 border-amber-100',
-      activeRing: 'ring-2 ring-amber-600',
-      iconBg: 'bg-amber-100 text-amber-700',
+      accent: 'from-amber-500 to-yellow-400',
+      wash: 'from-amber-500/[0.07]',
+      activeRing: 'ring-2 ring-amber-500/80',
+      iconBg: 'bg-amber-100/80 text-amber-700',
+      valueColor: 'text-slate-900',
+      borderHover: 'hover:border-amber-300',
     },
     rose: {
-      bg: 'bg-rose-50 text-rose-800 border-rose-100',
-      activeRing: 'ring-2 ring-rose-600',
-      iconBg: 'bg-rose-100 text-rose-700',
+      accent: 'from-rose-500 to-pink-400',
+      wash: 'from-rose-500/[0.07]',
+      activeRing: 'ring-2 ring-rose-500/80',
+      iconBg: 'bg-rose-100/80 text-rose-700',
+      valueColor: 'text-slate-900',
+      borderHover: 'hover:border-rose-300',
     },
     indigo: {
-      bg: 'bg-indigo-50 text-indigo-800 border-indigo-100',
-      activeRing: 'ring-2 ring-indigo-600',
-      iconBg: 'bg-indigo-100 text-indigo-700',
+      accent: 'from-indigo-500 to-purple-400',
+      wash: 'from-indigo-500/[0.07]',
+      activeRing: 'ring-2 ring-indigo-500/80',
+      iconBg: 'bg-indigo-100/80 text-indigo-700',
+      valueColor: 'text-slate-900',
+      borderHover: 'hover:border-indigo-300',
     },
   };
 
@@ -48,15 +66,20 @@ export const StatCard = ({
   return (
     <div
       onClick={onClick}
-      className={`rounded-2xl bg-white border border-slate-200/90 p-3.5 sm:p-5 transition-lift shadow-xs hover:shadow-card hover:border-emerald-300 min-w-0 ${
+      className={`relative overflow-hidden rounded-2xl bg-white border border-slate-200/90 bg-gradient-to-r ${scheme.wash} via-transparent to-transparent p-3.5 sm:p-5 transition-lift shadow-xs hover:shadow-card ${scheme.borderHover} min-w-0 ${
         active ? scheme.activeRing : ''
       } ${onClick ? 'cursor-pointer' : ''}`}
     >
-      <div className="flex items-start justify-between gap-2 sm:gap-3">
+      {/* Signature vertical left accent bar */}
+      <div className={`absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b ${scheme.accent} rounded-l-2xl`} />
+
+      <div className="flex items-start justify-between gap-2 sm:gap-3 pl-1">
         <div className="min-w-0 flex-1">
-          <p className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider truncate">{title}</p>
+          <p className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider truncate">
+            {title}
+          </p>
           <div className="mt-1 flex items-baseline gap-1.5 flex-wrap">
-            <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <span className={`text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight font-mono ${scheme.valueColor}`}>
               {value}
             </span>
             {trend && (
@@ -66,12 +89,14 @@ export const StatCard = ({
             )}
           </div>
           {subtitle && (
-            <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 font-medium line-clamp-1">{subtitle}</p>
+            <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 font-medium line-clamp-1">
+              {subtitle}
+            </p>
           )}
         </div>
 
         {Icon && (
-          <div className={`rounded-xl p-2 sm:p-3 shrink-0 ${scheme.iconBg}`}>
+          <div className={`rounded-xl p-2 sm:p-2.5 shrink-0 ${scheme.iconBg} shadow-2xs`}>
             <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
           </div>
         )}

@@ -49,7 +49,9 @@ export const MissingDocsPage = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
-            <FileQuestion className="w-7 h-7 text-amber-600" />
+            <span className="p-2 rounded-xl bg-amber-50 text-amber-700 border border-amber-200/80 shadow-xs">
+              <FileQuestion className="w-6 h-6 text-amber-700" />
+            </span>
             <span>Document Checklist & Gap Analysis</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -58,27 +60,32 @@ export const MissingDocsPage = () => {
         </div>
 
         {/* Overall Completion */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs w-full sm:w-auto sm:min-w-[280px]">
-          <div className="flex justify-between items-center text-xs mb-1.5">
-            <span className="font-semibold text-slate-700">Overall Completion</span>
-            <span className="font-bold text-emerald-700 font-mono">
-              {verifiedCount} / {total} Complete
-            </span>
+        <div className="relative overflow-hidden p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs w-full sm:w-auto sm:min-w-[280px]">
+          <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-emerald-500 to-green-400" />
+          <div className="pl-1">
+            <div className="flex justify-between items-center text-xs mb-2">
+              <span className="font-semibold text-slate-700">Overall Completion</span>
+              <span className="font-mono font-extrabold text-emerald-700 text-sm">
+                {verifiedCount} / {total} Complete
+              </span>
+            </div>
+            <ProgressBar value={verifiedCount} max={total} color="emerald" size="sm" />
           </div>
-          <ProgressBar value={verifiedCount} max={total} color="emerald" size="sm" />
         </div>
       </div>
 
       {/* PRIORITY SECTION: “What should I upload next?” */}
-      <section className="rounded-2xl border border-amber-200 bg-amber-50/40 p-4 sm:p-6 space-y-4">
+      <section className="rounded-2xl border border-amber-200/80 bg-gradient-to-br from-amber-50/70 via-amber-50/30 to-white p-4 sm:p-6 space-y-4 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-600 shrink-0" />
-            <h2 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight">
+            <span className="p-1 rounded-lg bg-amber-100 text-amber-700">
+              <Sparkles className="w-4 h-4 text-amber-700 shrink-0" />
+            </span>
+            <h2 className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight">
               What should I upload next? (Highest Benefit Unlock)
             </h2>
           </div>
-          <span className="text-[11px] sm:text-xs text-amber-800 font-mono font-bold">
+          <span className="text-[11px] sm:text-xs text-amber-800 font-mono font-bold bg-amber-100/70 px-2.5 py-1 rounded-full border border-amber-200/60 self-start sm:self-auto">
             Ranked by Subsidy Potential
           </span>
         </div>
@@ -87,24 +94,28 @@ export const MissingDocsPage = () => {
           {priorityUploads.map((item) => (
             <div
               key={item.rank}
-              className="p-4 rounded-xl border border-amber-200 bg-white space-y-3 flex flex-col justify-between shadow-xs"
+              className="relative overflow-hidden p-5 rounded-2xl border border-amber-200/80 bg-white space-y-3 flex flex-col justify-between shadow-xs transition-lift hover:shadow-card hover:border-amber-300"
             >
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-800 text-xs font-bold flex items-center justify-center font-mono">
-                    {item.rank}
+              {/* Luminous left accent line and warm glow */}
+              <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-amber-400/[0.08] to-transparent pointer-events-none" />
+              <div className="absolute left-0 top-4 bottom-4 w-1.5 rounded-r-full bg-gradient-to-b from-amber-500 to-yellow-400 shadow-sm" />
+
+              <div className="relative z-10 pl-1.5">
+                <div className="flex items-center justify-between mb-2.5">
+                  <span className="w-7 h-7 rounded-xl bg-amber-100 text-amber-900 text-xs font-black flex items-center justify-center font-mono border border-amber-200/80 shadow-2xs">
+                    #{item.rank}
                   </span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-mono">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100/90 text-emerald-950 font-mono border border-emerald-200">
                     {item.impact}
                   </span>
                 </div>
-                <h4 className="text-xs font-bold text-slate-900">{item.name}</h4>
-                <p className="text-[11px] text-slate-600 mt-1 leading-snug">{item.why}</p>
+                <h4 className="text-xs font-bold text-slate-900 leading-snug">{item.name}</h4>
+                <p className="text-[11px] text-slate-600 mt-1.5 leading-relaxed">{item.why}</p>
               </div>
 
               <button
                 onClick={() => navigate('/documents')}
-                className="w-full mt-3 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold py-2 shadow-xs transition-smooth flex items-center justify-center gap-1.5"
+                className="relative z-10 w-full mt-3 rounded-xl bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white text-xs font-bold py-2.5 shadow-xs transition-smooth flex items-center justify-center gap-1.5"
               >
                 <span>{item.action}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -156,12 +167,12 @@ export const MissingDocsPage = () => {
                     {doc.status === 'Missing' || doc.status === 'Needs review' ? (
                       <button
                         onClick={() => navigate('/documents')}
-                        className="rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-3 py-1.5 shadow-xs transition-smooth"
+                        className="rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-bold px-3.5 py-1.5 shadow-xs transition-smooth"
                       >
                         Upload Now
                       </button>
                     ) : (
-                      <span className="text-emerald-700 font-bold font-mono text-[11px]">
+                      <span className="inline-flex items-center gap-1 text-emerald-700 font-bold font-mono text-[11px] bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                         Verified ✓
                       </span>
                     )}

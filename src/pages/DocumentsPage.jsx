@@ -40,7 +40,9 @@ export const DocumentsPage = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
-            <FileText className="w-7 h-7 text-emerald-700" />
+            <span className="p-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200/80 shadow-xs">
+              <FileText className="w-6 h-6 text-emerald-700" />
+            </span>
             <span>Citizen Documents Repository</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -49,14 +51,17 @@ export const DocumentsPage = () => {
         </div>
 
         {/* TOP: Document completeness progress */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs w-full sm:w-auto sm:min-w-[280px]">
-          <div className="flex justify-between items-center text-xs mb-1.5">
-            <span className="font-semibold text-slate-700">Document Completeness</span>
-            <span className="font-bold text-emerald-700 font-mono">
-              {uploadedCount} of {totalRequired} Available
-            </span>
+        <div className="relative overflow-hidden p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs w-full sm:w-auto sm:min-w-[280px]">
+          <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-emerald-500 to-green-400" />
+          <div className="pl-1">
+            <div className="flex justify-between items-center text-xs mb-2">
+              <span className="font-semibold text-slate-700">Document Completeness</span>
+              <span className="font-mono font-extrabold text-emerald-700 text-sm">
+                {uploadedCount} / {totalRequired} Available
+              </span>
+            </div>
+            <ProgressBar value={uploadedCount} max={totalRequired} color="emerald" size="sm" />
           </div>
-          <ProgressBar value={uploadedCount} max={totalRequired} color="emerald" size="sm" />
         </div>
       </div>
 
@@ -68,16 +73,16 @@ export const DocumentsPage = () => {
       />
 
       {/* CATEGORY FILTER TABS */}
-      <div className="flex items-center justify-between gap-4 flex-wrap">
-        <div className="flex items-center gap-1.5 overflow-x-auto py-1">
+      <div className="flex items-center justify-between gap-4 flex-wrap bg-slate-50/70 p-2 rounded-2xl border border-slate-200/80">
+        <div className="flex items-center gap-1.5 overflow-x-auto py-0.5">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize whitespace-nowrap transition-smooth ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold capitalize whitespace-nowrap transition-smooth ${
                 selectedCategory === cat
                   ? 'bg-emerald-700 text-white shadow-xs'
-                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200'
+                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300'
               }`}
             >
               {cat === 'all' ? 'All Documents' : cat}
@@ -85,8 +90,8 @@ export const DocumentsPage = () => {
           ))}
         </div>
 
-        <span className="text-xs text-slate-500 font-mono">
-          Showing {filteredDocs.length} files
+        <span className="text-xs font-mono font-semibold text-slate-500 px-2">
+          {filteredDocs.length} {filteredDocs.length === 1 ? 'file' : 'files'}
         </span>
       </div>
 
