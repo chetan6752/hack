@@ -4,25 +4,31 @@
 
 @layer base {
   :root {
-    --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     background-color: #f8fafc;
-    color: #1e293b;
+    color: #0f172a;
     font-family: var(--font-sans);
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
 }
 
-/* Clean GovTech scrollbar */
+/* Modern minimalist scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -34,6 +40,27 @@
   background: #94a3b8;
 }
 
+/* Micro-interactions & animations */
 .transition-smooth {
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transition-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.transition-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Modern glassmorphism surfaces */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Subtle glow accents */
+.glow-emerald {
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15), 0 8px 10px -6px rgba(16, 185, 129, 0.1);
 }

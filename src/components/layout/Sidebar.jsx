@@ -51,7 +51,7 @@ export const Sidebar = () => {
         <div className="overflow-hidden">
           <div className="flex items-center gap-1.5">
             <span className="text-xs font-extrabold tracking-wider uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-300">
-              GovAssist AI
+              DevKo Schemes
             </span>
             <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-300 font-mono">PRO</span>
           </div>

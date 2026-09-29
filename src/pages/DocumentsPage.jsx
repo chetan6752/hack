@@ -49,7 +49,7 @@ export const DocumentsPage = () => {
         </div>
 
         {/* TOP: Document completeness progress */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs min-w-[280px]">
+        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs w-full sm:w-auto sm:min-w-[280px]">
           <div className="flex justify-between items-center text-xs mb-1.5">
             <span className="font-semibold text-slate-700">Document Completeness</span>
             <span className="font-bold text-emerald-700 font-mono">

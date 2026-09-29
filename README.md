@@ -1,12 +1,12 @@
-# 🧭 DevKo — Independent Financial Policy & Scheme Discovery Platform
+# 🧭 DevKo — Financial Policy & Scheme Discovery Platform
 
-> **DevKo** is an independent, high-performance intelligence platform that empowers citizens, entrepreneurs, and MSME business owners to discover financial schemes, subsidies, and welfare policies. Built with a deterministic rule evaluation engine, DevKo checks eligibility with verified facts, estimates potential benefits, and guides applicants step-by-step — with zero government affiliation, zero third-party platform dependencies, and zero AI hallucinations.
+> **DevKo** is an high-performance intelligence platform that empowers citizens, entrepreneurs, and MSME business owners to discover financial schemes, subsidies, and welfare policies. Built with a deterministic rule evaluation engine, DevKo checks eligibility with verified facts, estimates potential benefits, and guides applicants step-by-step — with zero government affiliation, zero third-party platform dependencies, and zero AI hallucinations.
 
 ---
 
 ## 🌟 Key Features
 
-1. **Independent & Privacy-Preserving Architecture**:
+1. **Privacy-Preserving Architecture**:
    - DevKo operates completely independently and is not bound to or an assistant of any government portal or third-party service.
    - Transparent, privacy-preserving parameter evaluation directly from verified applicant facts.
 

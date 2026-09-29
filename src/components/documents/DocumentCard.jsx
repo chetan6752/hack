@@ -8,7 +8,7 @@ export const DocumentCard = ({ document, onPreview }) => {
   const extractedKeys = Object.keys(document.extractedFields || {});
 
   return (
-    <div className={`flex flex-col justify-between rounded-2xl bg-white border transition-all duration-200 p-5 shadow-xs hover:shadow-card ${
+    <div className={`flex flex-col justify-between rounded-2xl bg-white border transition-lift p-5 shadow-xs hover:shadow-card ${
       isMissing
         ? 'border-dashed border-slate-300 bg-slate-50/50'
         : isNeedsReview

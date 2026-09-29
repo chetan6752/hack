@@ -48,7 +48,7 @@ export const StatCard = ({
   return (
     <div
       onClick={onClick}
-      className={`rounded-2xl bg-white border border-slate-200/90 p-3 sm:p-5 transition-all duration-200 shadow-xs hover:shadow-card hover:border-emerald-300 min-w-0 ${
+      className={`rounded-2xl bg-white border border-slate-200/90 p-3.5 sm:p-5 transition-lift shadow-xs hover:shadow-card hover:border-emerald-300 min-w-0 ${
         active ? scheme.activeRing : ''
       } ${onClick ? 'cursor-pointer' : ''}`}
     >

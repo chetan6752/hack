@@ -10,7 +10,7 @@ export const SchemeCard = ({ scheme, isRecommended = false }) => {
   const isBookmarked = bookmarkedSchemes.includes(scheme.id);
 
   return (
-    <div className={`relative flex flex-col justify-between rounded-2xl bg-white border transition-all duration-200 p-4 sm:p-6 shadow-xs hover:shadow-card min-w-0 ${
+    <div className={`relative flex flex-col justify-between rounded-2xl bg-white border transition-lift p-4 sm:p-6 shadow-xs hover:shadow-card min-w-0 ${
       isRecommended
         ? 'border-emerald-300 ring-1 ring-emerald-200/80 bg-gradient-to-b from-emerald-50/20 to-white'
         : 'border-slate-200 hover:border-emerald-400'

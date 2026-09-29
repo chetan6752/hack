@@ -23,7 +23,7 @@ export const ApplicationGuidePage = () => {
       whatToDo: 'Run deterministic rule engine against verified applicant parameters and enterprise classification.',
       documentsNeeded: 'Udyam Registration, Aadhaar Card, Income Certificate',
       commonMistake: 'Applying under General category when MSME micro-enterprise quota provides higher subvention.',
-      linkPlaceholder: 'Internal GovAssist Engine (Completed)',
+      linkPlaceholder: 'DevKo Eligibility Engine (Completed)',
     },
     {
       step: 2,
@@ -58,7 +58,7 @@ export const ApplicationGuidePage = () => {
       title: 'Upload Verified Extracted Dossier',
       status: 'pending',
       whatToDo: 'Attach the pre-verified document bundle directly into the portal attachment repository.',
-      documentsNeeded: 'Standard PDF Dossier compiled by GovAssist',
+      documentsNeeded: 'Standard PDF Dossier compiled by DevKo',
       commonMistake: 'Attaching password-protected PDF files which fail automated departmental OCR.',
       linkPlaceholder: 'Portal Upload Tab',
     },
@@ -78,7 +78,7 @@ export const ApplicationGuidePage = () => {
       whatToDo: 'Store acknowledgement slip and reference ID (e.g. MSME-SUB-2026-MH-09821) in your tracking dashboard.',
       documentsNeeded: 'Downloaded PDF Acknowledgement Receipt',
       commonMistake: 'Losing reference number, making bank branch reconciliation slower.',
-      linkPlaceholder: 'GovAssist Tracking Auto-Sync',
+      linkPlaceholder: 'DevKo Tracking Auto-Sync',
     },
     {
       step: 8,

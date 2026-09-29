@@ -14,7 +14,7 @@ export const DocumentUploader = ({ onUploadSuccess }) => {
     '1. Uploading document...',
     '2. Reading document (OCR & LayoutLM)...',
     '3. Extracting structured key-value fields...',
-    '4. Cross-verifying with government databases...',
+    '4. Cross-verifying parameters with statutory policy rules...',
     '5. Verification Completed!'
   ];
 
@@ -62,7 +62,7 @@ export const DocumentUploader = ({ onUploadSuccess }) => {
           status: 'Verified',
           expiryDate: '31 Mar 2027',
           confidence: '99.2%',
-          sourceRef: 'State Revenue Gateway e-Signature Validated',
+          sourceRef: 'Digital Signature & Parameter Hash Validated',
           extractedFields: isIncome ? {
             "Income detected": "₹3,80,000",
             "Financial year": "2025–26",
