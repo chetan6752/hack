@@ -19,7 +19,7 @@ export const RagExplainerPage = () => {
       <div className="border-b border-slate-200 pb-6">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
-            For Technical Evaluators & Judges Only
+            DevKo Policy RAG & Retrieval Engine
           </span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">

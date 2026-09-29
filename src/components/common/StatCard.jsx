@@ -48,31 +48,31 @@ export const StatCard = ({
   return (
     <div
       onClick={onClick}
-      className={`rounded-2xl bg-white border border-slate-200/90 p-5 transition-all duration-200 shadow-xs hover:shadow-card hover:border-emerald-300 ${
+      className={`rounded-2xl bg-white border border-slate-200/90 p-3 sm:p-5 transition-all duration-200 shadow-xs hover:shadow-card hover:border-emerald-300 min-w-0 ${
         active ? scheme.activeRing : ''
       } ${onClick ? 'cursor-pointer' : ''}`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">{title}</p>
-          <div className="mt-1.5 flex items-baseline gap-2">
-            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+      <div className="flex items-start justify-between gap-2 sm:gap-3">
+        <div className="min-w-0 flex-1">
+          <p className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider truncate">{title}</p>
+          <div className="mt-1 flex items-baseline gap-1.5 flex-wrap">
+            <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tracking-tight">
               {value}
             </span>
             {trend && (
-              <span className="text-xs font-bold text-emerald-700">
+              <span className="text-[10px] sm:text-xs font-bold text-emerald-700">
                 {trend}
               </span>
             )}
           </div>
           {subtitle && (
-            <p className="mt-1 text-xs text-slate-500 font-medium">{subtitle}</p>
+            <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-slate-500 font-medium line-clamp-1">{subtitle}</p>
           )}
         </div>
 
         {Icon && (
-          <div className={`rounded-xl p-3 shrink-0 ${scheme.iconBg}`}>
-            <Icon className="h-5 w-5" />
+          <div className={`rounded-xl p-2 sm:p-3 shrink-0 ${scheme.iconBg}`}>
+            <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
           </div>
         )}
       </div>

@@ -4,7 +4,7 @@ import {
   ArrowDown,
   ShieldCheck
 } from 'lucide-react';
-import { hackathonArchitectureLayers } from '../data/mockData';
+import { systemArchitectureLayers } from '../data/mockData';
 
 export const ArchitecturePage = () => {
   return (
@@ -13,7 +13,7 @@ export const ArchitecturePage = () => {
       <div className="border-b border-slate-200 pb-6">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
-            Hackathon Engineering Architecture
+            DevKo Core Engineering Architecture
           </span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
@@ -27,7 +27,7 @@ export const ArchitecturePage = () => {
 
       {/* ARCHITECTURE FLOW CARDS */}
       <div className="space-y-4">
-        {hackathonArchitectureLayers.map((layer, idx) => (
+        {systemArchitectureLayers.map((layer, idx) => (
           <React.Fragment key={idx}>
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:border-emerald-300 transition-smooth">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
@@ -57,7 +57,7 @@ export const ArchitecturePage = () => {
               </div>
             </div>
 
-            {idx < hackathonArchitectureLayers.length - 1 && (
+            {idx < systemArchitectureLayers.length - 1 && (
               <div className="flex justify-center text-slate-400">
                 <ArrowDown className="w-4 h-4" />
               </div>

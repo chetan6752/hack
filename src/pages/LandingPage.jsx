@@ -23,9 +23,9 @@ import {
   Award,
   ExternalLink,
   Menu,
-  X
+  X,
+  Compass
 } from 'lucide-react';
-import { OfficialGovHeader } from '../components/layout/OfficialGovHeader';
 import { StatusBadge } from '../components/common/StatusBadge';
 
 export const LandingPage = () => {
@@ -59,24 +59,24 @@ export const LandingPage = () => {
 
   const faqs = [
     {
-      q: 'What is myScheme and how is it different from other government portals?',
-      a: 'myScheme is a unified national platform offering one-stop search and discovery of Central and State government schemes. Unlike traditional departmental sites that only provide static guidelines, myScheme uses a deterministic rule evaluation engine that checks your exact demographic and document facts against official statutory criteria.'
+      q: 'What is DevKo and how does it work?',
+      a: 'DevKo is an independent discovery and eligibility intelligence platform for financial policies, grants, and subsidies. DevKo is not affiliated with or bound to any government department or third-party portal. It evaluates your enterprise parameters against publicly published statutory criteria using deterministic rules.'
     },
     {
-      q: 'How does myScheme verify my eligibility?',
-      a: 'The platform extracts verified key-value facts (such as annual turnover, certified income, Udyam registration ID, and state domicile) from your uploaded documents and executes deterministic Boolean rules directly cited from official Gazette notifications. It does not use speculative generative AI to guess eligibility.'
+      q: 'How does DevKo verify my eligibility?',
+      a: 'The platform evaluates verified key-value facts (such as annual turnover, certified income, Udyam registration ID, and state domicile) from your documents against deterministic Boolean rules cited directly from official circulars. It does not use speculative generative AI to guess eligibility.'
     },
     {
-      q: 'Can small businesses and MSME proprietors find schemes here?',
-      a: 'Yes. The portal features dedicated MSME interest subventions, technology modernization incentives, capital subsidies, and working capital relief programs from the Ministry of MSME, Commerce & Industry, and State Directorates of Industry.'
+      q: 'Can small businesses and MSME proprietors find schemes on DevKo?',
+      a: 'Yes. DevKo features comprehensive coverage for MSME interest subventions, technology modernization incentives, capital subsidies, and working capital relief programs.'
     },
     {
       q: 'What should I do if a document is outdated or flagged?',
-      a: 'If a document requires clarification (such as a prior-year CA turnover audit), the case is seamlessly routed to the Manual Review Center. Caseworkers inspect the discrepancy and advise whether an updated filing or self-affidavit is required.'
+      a: 'If a document requires clarification (such as a prior-year CA turnover audit), the case is seamlessly highlighted in the Review Center with specific instructions on required updates.'
     },
     {
-      q: 'Do I have to pay any fee to use myScheme Assistant?',
-      a: 'No. myScheme is a free public service initiative by the Government of India designed to make financial entitlements transparent and accessible to every citizen and entrepreneur.'
+      q: 'Do I have to pay any fee to use DevKo?',
+      a: 'No. DevKo is a free, independent platform built to make financial policy discovery and eligibility criteria transparent and accessible to every citizen and entrepreneur.'
     }
   ];
 
@@ -96,31 +96,28 @@ export const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 selection:bg-emerald-600 font-sans">
-      {/* 1. Official National Gov Header Strip */}
-      <OfficialGovHeader />
-
-      {/* 2. Main Navigation Bar */}
+      {/* 1. Main Navigation Bar */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-40 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
-          {/* Logo */}
-          <NavLink to="/" className="flex items-center gap-3 shrink-0">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-700 to-green-600 flex items-center justify-center text-white shadow-xs">
-              <Landmark className="w-5 h-5 text-white" />
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-3 sm:gap-4">
+          {/* Logo: DevKo */}
+          <NavLink to="/" className="flex items-center gap-2 sm:gap-2.5 shrink-0 group">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-green-500 flex items-center justify-center text-white shadow-xs border border-emerald-500/20">
+              <Compass className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-extrabold text-slate-900 text-lg sm:text-xl tracking-tight">
-                  my<span className="text-emerald-700">Scheme</span>
+                  Dev<span className="text-emerald-700">Ko</span>
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                  ASSISTANT
+                <span className="text-[10px] px-1.5 py-0.2 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 uppercase">
+                  Schemes
                 </span>
               </div>
-              <p className="text-[10px] text-slate-500 font-medium hidden sm:block">National Scheme Discovery & Eligibility Portal</p>
+              <p className="text-[10px] text-slate-500 font-medium hidden sm:block">Independent Policy & Eligibility Intelligence</p>
             </div>
           </NavLink>
 
-          {/* Nav links */}
+          {/* Desktop Nav links */}
           <nav className="hidden md:flex items-center gap-2 lg:gap-4 text-xs font-semibold text-slate-600">
             <NavLink to="/" className="text-emerald-800 font-bold px-2 py-1">Home</NavLink>
             <NavLink to="/schemes" className="hover:text-emerald-800 px-2 py-1 transition-smooth">Find Schemes</NavLink>
@@ -134,22 +131,22 @@ export const LandingPage = () => {
           <div className="flex items-center gap-2 sm:gap-3">
             <NavLink
               to="/login"
-              className="px-3.5 py-2 text-xs font-bold text-slate-700 hover:text-emerald-800 hover:bg-slate-100 rounded-xl transition-smooth border border-slate-200"
+              className="px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs font-bold text-slate-700 hover:text-emerald-800 hover:bg-slate-100 rounded-xl transition-smooth border border-slate-200"
             >
               Sign In
             </NavLink>
             <NavLink
               to="/dashboard"
-              className="rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-4 py-2 shadow-xs transition-smooth flex items-center gap-1.5"
+              className="rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 shadow-xs transition-smooth flex items-center gap-1.5"
             >
-              <span>Citizen Dashboard</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>Dashboard</span>
+              <ArrowRight className="w-3.5 h-3.5 hidden sm:inline" />
             </NavLink>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition-smooth"
+              className="md:hidden p-1.5 sm:p-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition-smooth"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -206,50 +203,59 @@ export const LandingPage = () => {
               >
                 <span>System Architecture</span>
               </NavLink>
+              <NavLink
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2.5 rounded-xl text-emerald-800 bg-emerald-50/60 hover:bg-emerald-100 flex items-center justify-between mt-2"
+              >
+                <span>Citizen Sign In →</span>
+              </NavLink>
             </div>
           </div>
         )}
       </header>
 
-      {/* 3. Hero Section (Spacious faint green & white theme) */}
-      <section className="pt-10 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="rounded-3xl bg-gradient-to-b from-emerald-50 via-[#f3faf5] to-white border border-emerald-200/80 p-6 sm:p-10 lg:p-14 shadow-xs text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-emerald-200 text-emerald-800 text-xs font-bold shadow-2xs">
-            <ShieldCheck className="w-4 h-4 text-emerald-700" />
-            <span>One-Stop Discovery Platform for Government Financial Schemes</span>
+      {/* 2. Hero Section (Clean faint green & white theme) */}
+      <section className="pt-6 sm:pt-10 pb-12 sm:pb-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="rounded-2xl sm:rounded-3xl bg-gradient-to-b from-emerald-50 via-[#f3faf5] to-white border border-emerald-200/80 p-4 sm:p-8 lg:p-12 shadow-xs text-center space-y-5 sm:space-y-6">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-white border border-emerald-200 text-emerald-800 text-[11px] sm:text-xs font-bold shadow-2xs max-w-full">
+            <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-700 shrink-0" />
+            <span className="truncate">Independent Platform for Government Schemes & Subsidies</span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
             Find the right schemes you qualify for,{' '}
             <span className="text-emerald-700">with verified rule evidence.</span>
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Discover Central and State financial opportunities, understand exactly why you qualify, estimate potential subsidies, and know the next steps to apply.
+          <p className="text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Discover Central and State financial policies, verify exactly why you qualify, estimate potential subsidies, and obtain clear guidance to apply.
           </p>
 
-          {/* Central Search Bar (myScheme Style) */}
-          <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto pt-2">
-            <div className="relative flex items-center shadow-card rounded-2xl bg-white border border-slate-300 hover:border-emerald-500 focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-100 p-1.5 transition-smooth">
-              <Search className="w-5 h-5 text-slate-400 ml-3 shrink-0" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search schemes by name (e.g. MSME Interest Support, Working Capital, Seed Fund)..."
-                className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none"
-              />
+          {/* Central Search Bar (Fully Mobile Responsive) */}
+          <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto pt-1 sm:pt-2 w-full">
+            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center shadow-card rounded-2xl bg-white border border-slate-300 hover:border-emerald-500 focus-within:border-emerald-600 focus-within:ring-2 focus-within:ring-emerald-100 p-1.5 transition-smooth gap-2 sm:gap-0">
+              <div className="flex items-center flex-1 min-w-0 px-2 sm:px-3">
+                <Search className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 shrink-0 mr-2" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search schemes (e.g. MSME Interest Support, Working Capital)..."
+                  className="w-full bg-transparent py-2 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none min-w-0"
+                />
+              </div>
               <button
                 type="submit"
-                className="rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-5 py-2.5 shadow-xs transition-smooth shrink-0"
+                className="w-full sm:w-auto rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm px-5 py-2.5 shadow-xs transition-smooth shrink-0"
               >
                 Search
               </button>
             </div>
 
             {/* Popular search tags */}
-            <div className="flex flex-wrap items-center justify-center gap-2 mt-3 text-xs text-slate-500">
-              <span className="font-semibold text-slate-400 text-[11px]">Popular:</span>
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-3 text-xs text-slate-500">
+              <span className="font-semibold text-slate-400 text-[10px] sm:text-[11px]">Popular:</span>
               {['MSME Subvention', 'Working Capital', 'Startup Seed Fund', 'Women Entrepreneurship', 'Technology Upgradation'].map((tag) => (
                 <button
                   type="button"
@@ -258,7 +264,7 @@ export const LandingPage = () => {
                     setSearchQuery(tag);
                     navigate('/schemes');
                   }}
-                  className="px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-emerald-400 hover:text-emerald-800 text-[11px] font-medium transition-smooth shadow-2xs"
+                  className="px-2 sm:px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-emerald-400 hover:text-emerald-800 text-[10px] sm:text-[11px] font-medium transition-smooth shadow-2xs"
                 >
                   {tag}
                 </button>
@@ -267,22 +273,22 @@ export const LandingPage = () => {
           </form>
 
           {/* Interactive "Find Schemes for You" Demographic Quick Selector */}
-          <div className="mt-10 rounded-2xl bg-white border border-slate-200 p-6 max-w-4xl mx-auto shadow-xs text-left">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+          <div className="mt-8 sm:mt-10 rounded-2xl bg-white border border-slate-200 p-4 sm:p-6 max-w-4xl mx-auto shadow-xs text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-3 mb-4 gap-1.5">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-700" />
-                <h3 className="text-sm font-bold text-slate-900">Find Schemes For You (Instant Assessment)</h3>
+                <Sparkles className="w-4 h-4 text-emerald-700 shrink-0" />
+                <h3 className="text-xs sm:text-sm font-bold text-slate-900">Find Schemes For You (Instant Assessment)</h3>
               </div>
-              <span className="text-[11px] text-slate-500 font-medium">Demo Profile Loaded: Rahul Sharma</span>
+              <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium">Demo Profile: Rahul Sharma (MSME)</span>
             </div>
 
             <form onSubmit={handleQuickMatch} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
               <div>
-                <label className="text-slate-500 block mb-1 font-semibold">Your State</label>
+                <label className="text-slate-500 block mb-1 font-semibold text-[11px] sm:text-xs">Your State</label>
                 <select
                   value={selectedState}
                   onChange={(e) => setSelectedState(e.target.value)}
-                  className="w-full rounded-xl bg-slate-50 border border-slate-300 p-2.5 text-slate-800 font-medium focus:outline-none focus:border-emerald-600"
+                  className="w-full rounded-xl bg-slate-50 border border-slate-300 p-2 sm:p-2.5 text-slate-800 font-medium focus:outline-none focus:border-emerald-600 text-xs"
                 >
                   <option value="Maharashtra">Maharashtra</option>
                   <option value="Gujarat">Gujarat</option>
@@ -293,33 +299,33 @@ export const LandingPage = () => {
               </div>
 
               <div>
-                <label className="text-slate-500 block mb-1 font-semibold">Applicant Age</label>
+                <label className="text-slate-500 block mb-1 font-semibold text-[11px] sm:text-xs">Applicant Age</label>
                 <input
                   type="number"
                   value={selectedAge}
                   onChange={(e) => setSelectedAge(e.target.value)}
-                  className="w-full rounded-xl bg-slate-50 border border-slate-300 p-2.5 text-slate-800 font-medium focus:outline-none focus:border-emerald-600"
+                  className="w-full rounded-xl bg-slate-50 border border-slate-300 p-2 sm:p-2.5 text-slate-800 font-medium focus:outline-none focus:border-emerald-600 text-xs"
                 />
               </div>
 
               <div>
-                <label className="text-slate-500 block mb-1 font-semibold">Category / Occupation</label>
+                <label className="text-slate-500 block mb-1 font-semibold text-[11px] sm:text-xs">Category / Sector</label>
                 <select
                   value={selectedOccupation}
                   onChange={(e) => setSelectedOccupation(e.target.value)}
-                  className="w-full rounded-xl bg-slate-50 border border-slate-300 p-2.5 text-slate-800 font-medium focus:outline-none focus:border-emerald-600"
+                  className="w-full rounded-xl bg-slate-50 border border-slate-300 p-2 sm:p-2.5 text-slate-800 font-medium focus:outline-none focus:border-emerald-600 text-xs"
                 >
-                  <option value="MSME Owner">Micro / Small Business Owner</option>
+                  <option value="MSME Owner">Micro / Small Enterprise</option>
                   <option value="Individual">Individual Entrepreneur</option>
                   <option value="Self Employed">Self-Employed Professional</option>
-                  <option value="Student">Student / Researcher</option>
+                  <option value="Student">Student / Innovator</option>
                 </select>
               </div>
 
               <div className="flex items-end">
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 px-4 shadow-xs transition-smooth flex items-center justify-center gap-1.5"
+                  className="w-full rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2.5 px-4 shadow-xs transition-smooth flex items-center justify-center gap-1.5 text-xs"
                 >
                   <span>Check Eligibility</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -330,113 +336,113 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* 4. National Statistics Counter Strip */}
-      <section className="py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="rounded-2xl bg-white border border-slate-200 p-6 shadow-xs grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div className="space-y-1 border-r border-slate-100 last:border-none">
+      {/* 3. Key Discovery Metrics Counter Strip */}
+      <section className="py-4 sm:py-6 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="rounded-2xl bg-white border border-slate-200 p-4 sm:p-6 shadow-xs grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+          <div className="space-y-1">
             <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700 tracking-tight">4,700+</span>
-            <p className="text-xs text-slate-500 font-medium">Central & State Schemes</p>
+            <p className="text-[11px] sm:text-xs text-slate-500 font-medium">Central & State Schemes</p>
           </div>
-          <div className="space-y-1 border-r border-slate-100 last:border-none">
+          <div className="space-y-1">
             <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">28+</span>
-            <p className="text-xs text-slate-500 font-medium">States & Union Territories</p>
+            <p className="text-[11px] sm:text-xs text-slate-500 font-medium">States & Regions Covered</p>
           </div>
-          <div className="space-y-1 border-r border-slate-100 last:border-none">
+          <div className="space-y-1">
             <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700 tracking-tight">₹2.45L</span>
-            <p className="text-xs text-slate-500 font-medium">Identified MSME Benefits</p>
+            <p className="text-[11px] sm:text-xs text-slate-500 font-medium">Identified MSME Benefits</p>
           </div>
           <div className="space-y-1">
             <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">100%</span>
-            <p className="text-xs text-slate-500 font-medium">Deterministic Rule Audit</p>
+            <p className="text-[11px] sm:text-xs text-slate-500 font-medium">Deterministic Rule Audit</p>
           </div>
         </div>
       </section>
 
-      {/* 5. Broad Scheme Categories (myScheme 15-category system) */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+      {/* 4. Scheme Categories */}
+      <section className="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Explore Schemes by Sector
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Browse targeted financial assistance, subventions, and capital subsidies curated by ministerial departments.
+            Browse targeted financial assistance, subventions, and capital subsidies across key industries.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {categories.map((c) => {
             const Icon = c.icon;
             return (
               <div
                 key={c.title}
                 onClick={() => navigate(`/schemes?category=${encodeURIComponent(c.filter)}`)}
-                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-card transition-smooth cursor-pointer space-y-2 group"
+                className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-card transition-smooth cursor-pointer space-y-2 group"
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${c.color} group-hover:scale-105 transition-smooth`}>
-                  <Icon className="w-5 h-5" />
+                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center border ${c.color} group-hover:scale-105 transition-smooth`}>
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
-                <h3 className="text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-smooth">
+                <h3 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-smooth">
                   {c.title}
                 </h3>
-                <span className="text-xs text-slate-500 font-medium block">{c.count}</span>
+                <span className="text-[11px] sm:text-xs text-slate-500 font-medium block">{c.count}</span>
               </div>
             );
           })}
         </div>
       </section>
 
-      {/* 6. "How myScheme Works" (4 Simple Steps) */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">Process</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
-            How myScheme Assistant Works
+      {/* 5. How DevKo Works (4 Simple Steps) */}
+      <section className="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-emerald-800">Process</span>
+          <h2 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
+            How DevKo Works
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Four transparent steps from document verification to official portal submission.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-            <span className="text-3xl font-extrabold text-emerald-700 font-mono">01</span>
-            <h3 className="text-base font-bold text-slate-900">Upload Documents</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5">
+            <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700 font-mono">01</span>
+            <h3 className="text-sm sm:text-base font-bold text-slate-900">Upload Documents</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Upload your income, caste, address, or Udyam certificates. Document OCR securely extracts applicant fields.
+              Upload your financial statements, caste, address, or Udyam certificates. Document OCR securely extracts applicant fields.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-            <span className="text-3xl font-extrabold text-emerald-700 font-mono">02</span>
-            <h3 className="text-base font-bold text-slate-900">Deterministic Match</h3>
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5">
+            <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700 font-mono">02</span>
+            <h3 className="text-sm sm:text-base font-bold text-slate-900">Deterministic Match</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               Applicant facts are evaluated against official Gazette rules using mathematical AST operators without AI hallucination.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-            <span className="text-3xl font-extrabold text-emerald-700 font-mono">03</span>
-            <h3 className="text-base font-bold text-slate-900">Benefit Estimation</h3>
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5">
+            <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700 font-mono">03</span>
+            <h3 className="text-sm sm:text-base font-bold text-slate-900">Benefit Estimation</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               View transparent mathematical formulas, subvention slab rates, and factors that could influence disbursement.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
-            <span className="text-3xl font-extrabold text-emerald-700 font-mono">04</span>
-            <h3 className="text-base font-bold text-slate-900">Apply with Checklist</h3>
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-2.5">
+            <span className="text-2xl sm:text-3xl font-extrabold text-emerald-700 font-mono">04</span>
+            <h3 className="text-sm sm:text-base font-bold text-slate-900">Apply with Checklist</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Follow step-by-step guidance and submit your pre-verified dossier directly on the official ministerial portal.
+              Follow step-by-step guidance and submit your pre-verified dossier directly on the official portal with full confidence.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 7. Featured Schemes Preview */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      {/* 6. Featured Schemes Preview */}
+      <section className="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
               Featured Opportunities
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
@@ -445,15 +451,15 @@ export const LandingPage = () => {
           </div>
           <button
             onClick={() => navigate('/schemes')}
-            className="text-xs font-bold text-emerald-800 hover:text-emerald-950 flex items-center gap-1"
+            className="text-xs font-bold text-emerald-800 hover:text-emerald-950 flex items-center gap-1 self-start sm:self-auto"
           >
             <span>View all schemes</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white border border-emerald-300 ring-1 ring-emerald-200/80 shadow-xs space-y-4 flex flex-col justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-emerald-300 ring-1 ring-emerald-200/80 shadow-xs space-y-4 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -463,7 +469,7 @@ export const LandingPage = () => {
                   98% Match
                 </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">MSME Interest Support Scheme</h3>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900">MSME Interest Support Scheme</h3>
               <p className="text-xs text-slate-500 mt-0.5">Ministry of MSME</p>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed">
                 2% per annum interest subvention on fresh or incremental working capital loans for registered micro units.
@@ -483,7 +489,7 @@ export const LandingPage = () => {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
@@ -493,7 +499,7 @@ export const LandingPage = () => {
                   Manual Review
                 </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">Small Business Working Capital Support</h3>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900">Small Business Working Capital Support</h3>
               <p className="text-xs text-slate-500 mt-0.5">Ministry of Commerce & State Directorate</p>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed">
                 Working capital margin assistance for light engineering enterprises facing raw material inflation.
@@ -513,7 +519,7 @@ export const LandingPage = () => {
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -523,7 +529,7 @@ export const LandingPage = () => {
                   94% Match
                 </span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">PM Technology Upgradation Incentive</h3>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900">PM Technology Upgradation Incentive</h3>
               <p className="text-xs text-slate-500 mt-0.5">Ministry of Heavy Industries</p>
               <p className="text-xs text-slate-600 mt-2 leading-relaxed">
                 15% capital subsidy on procurement of advanced CNC machinery, automation tooling, and clean energy fixtures.
@@ -545,14 +551,14 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* 8. Frequently Asked Questions (Accordion) */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-slate-200">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+      {/* 7. Frequently Asked Questions (Accordion) */}
+      <section className="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-slate-200">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
             Frequently Asked Questions
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Common questions regarding government schemes, eligibility verification, and application guidelines.
+            Common questions regarding DevKo, eligibility verification, and application guidelines.
           </p>
         </div>
 
@@ -565,13 +571,13 @@ export const LandingPage = () => {
               <button
                 type="button"
                 onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                className="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-900 flex items-center justify-between gap-4 select-none hover:bg-slate-50 transition-smooth"
+                className="w-full p-4 sm:p-5 text-left font-bold text-xs sm:text-sm text-slate-900 flex items-center justify-between gap-3 sm:gap-4 select-none hover:bg-slate-50 transition-smooth"
               >
                 <span>{faq.q}</span>
                 <ChevronDown className={`w-4 h-4 text-emerald-700 shrink-0 transition-transform duration-200 ${openFaq === idx ? 'rotate-180' : ''}`} />
               </button>
               {openFaq === idx && (
-                <div className="px-5 pb-5 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
+                <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-1 text-xs text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/50">
                   {faq.a}
                 </div>
               )}
@@ -580,26 +586,26 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* 9. CTA Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-800 to-green-700 text-white shadow-xs space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+      {/* 8. CTA Section */}
+      <section className="py-8 sm:py-12 px-3 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+        <div className="p-6 sm:p-10 md:p-12 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-emerald-800 to-green-700 text-white shadow-xs space-y-4">
+          <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight">
             Ready to find the schemes you qualify for?
           </h2>
           <p className="text-xs sm:text-sm text-emerald-100 max-w-lg mx-auto">
             Experience Rahul Sharma's pre-loaded MSME case or test custom document uploads and policy evaluations.
           </p>
-          <div className="pt-2 flex flex-wrap justify-center gap-3">
+          <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
             <button
               onClick={() => navigate('/dashboard')}
-              className="rounded-xl bg-white text-emerald-800 hover:bg-emerald-50 text-xs sm:text-sm font-bold px-7 py-3.5 shadow-sm transition-smooth inline-flex items-center gap-2"
+              className="w-full sm:w-auto rounded-xl bg-white text-emerald-800 hover:bg-emerald-50 text-xs sm:text-sm font-bold px-6 py-3.5 shadow-sm transition-smooth inline-flex items-center justify-center gap-2"
             >
               <span>Launch Demo Dashboard</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={() => navigate('/schemes')}
-              className="rounded-xl bg-emerald-900/60 hover:bg-emerald-900 text-white text-xs sm:text-sm font-bold px-6 py-3.5 border border-white/20 transition-smooth"
+              className="w-full sm:w-auto rounded-xl bg-emerald-900/60 hover:bg-emerald-900 text-white text-xs sm:text-sm font-bold px-6 py-3.5 border border-white/20 transition-smooth"
             >
               Search All Schemes
             </button>
@@ -607,33 +613,36 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* 10. Official Government Footer */}
-      <footer className="bg-white border-t border-slate-200 mt-12 py-10 text-xs text-slate-500">
+      {/* 9. DevKo Independent Platform Footer */}
+      <footer className="bg-white border-t border-slate-200 mt-8 sm:mt-12 py-8 sm:py-10 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-100 pb-8 mb-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-100 pb-6 sm:pb-8 mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-700 to-green-600 flex items-center justify-center text-white shrink-0 shadow-xs">
-                <Landmark className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-green-500 flex items-center justify-center text-white shrink-0 shadow-xs border border-emerald-500/20">
+                <Compass className="w-5 h-5 text-white" />
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-slate-900">myScheme - Financial Policy & Assistance Portal</h3>
-                <p className="text-[11px] text-slate-500">Ministry of Electronics & Information Technology, National e-Governance Division (NeGD)</p>
+              <div className="text-left">
+                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+                  <span>Dev</span><span className="text-emerald-700">Ko</span>
+                  <span className="text-[10px] px-1.5 py-0.2 rounded font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">Independent</span>
+                </h3>
+                <p className="text-[11px] text-slate-500">Independent Scheme Discovery & Eligibility Intelligence Platform</p>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-5 text-xs font-semibold text-slate-600">
-              <NavLink to="/" className="hover:text-emerald-800">Home</NavLink>
-              <NavLink to="/schemes" className="hover:text-emerald-800">Find Schemes</NavLink>
-              <NavLink to="/eligibility" className="hover:text-emerald-800">Eligibility Check</NavLink>
-              <NavLink to="/documents" className="hover:text-emerald-800">Documents</NavLink>
-              <NavLink to="/application-guide" className="hover:text-emerald-800">Application Guide</NavLink>
-              <NavLink to="/architecture" className="hover:text-emerald-800">Architecture</NavLink>
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-xs font-semibold text-slate-600">
+              <NavLink to="/" className="hover:text-emerald-800 transition-smooth">Home</NavLink>
+              <NavLink to="/schemes" className="hover:text-emerald-800 transition-smooth">Find Schemes</NavLink>
+              <NavLink to="/eligibility" className="hover:text-emerald-800 transition-smooth">Eligibility Check</NavLink>
+              <NavLink to="/documents" className="hover:text-emerald-800 transition-smooth">Documents</NavLink>
+              <NavLink to="/application-guide" className="hover:text-emerald-800 transition-smooth">Application Guide</NavLink>
+              <NavLink to="/architecture" className="hover:text-emerald-800 transition-smooth">Architecture</NavLink>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-400">
-            <p>© 2026 Government of India. Designed for National Hackathon Evaluation.</p>
-            <p>Certified Deterministic Evaluation Engine • Zero Hallucinations • MeriPehchaan Compatible</p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-400 text-center sm:text-left">
+            <p>© 2026 DevKo. Independent Financial Policy Discovery Platform. Not affiliated with or endorsed by any government entity.</p>
+            <p>Deterministic Rule Engine • Zero Hallucinations • Privacy-Preserving</p>
           </div>
         </div>
       </footer>

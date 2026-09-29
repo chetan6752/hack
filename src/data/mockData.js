@@ -1025,7 +1025,7 @@ export const mockRagQueries = [
   }
 ];
 
-export const hackathonArchitectureLayers = [
+export const systemArchitectureLayers = [
   {
     layer: "User Experience Layer",
     tech: "React 18 + Tailwind CSS + Lucide Icons",

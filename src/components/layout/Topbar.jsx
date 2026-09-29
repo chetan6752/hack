@@ -15,7 +15,7 @@ export const Topbar = () => {
       {/* Left side: Context and identity */}
       <div className="flex items-center gap-3">
         <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60 hidden sm:inline-block">
-          GovTech FinAssistant
+          DevKo Schemes
         </span>
         <ChevronRight className="w-3.5 h-3.5 text-slate-500 hidden sm:inline-block" />
         <span className="text-xs text-slate-400 font-medium">

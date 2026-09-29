@@ -45,58 +45,58 @@ export const EligibilityPage = () => {
       </div>
 
       {/* SUMMARY PANEL (4 Pillar Cards) */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-5 rounded-2xl border border-emerald-200 bg-white shadow-xs">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
+        <div className="p-3.5 sm:p-5 rounded-2xl border border-emerald-200 bg-white shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">Eligible</span>
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-800">Eligible</span>
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="text-3xl font-extrabold text-slate-900 mt-2">{eligibleCount}</div>
-          <p className="text-[11px] text-emerald-700 mt-1 font-medium">All rules verified & active</p>
+          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{eligibleCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-emerald-700 mt-0.5 sm:mt-1 font-medium">All rules verified & active</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-blue-200 bg-white shadow-xs">
+        <div className="p-3.5 sm:p-5 rounded-2xl border border-blue-200 bg-white shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-800">Potentially Eligible</span>
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-800">Potential</span>
             <HelpCircle className="w-4 h-4 text-blue-600" />
           </div>
-          <div className="text-3xl font-extrabold text-slate-900 mt-2">{potentialCount}</div>
-          <p className="text-[11px] text-blue-700 mt-1 font-medium">Likely match, pending docs</p>
+          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{potentialCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-blue-700 mt-0.5 sm:mt-1 font-medium">Likely match, pending docs</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-amber-200 bg-white shadow-xs">
+        <div className="p-3.5 sm:p-5 rounded-2xl border border-amber-200 bg-white shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-800">Manual Review</span>
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-800">Review</span>
             <AlertTriangle className="w-4 h-4 text-amber-600" />
           </div>
-          <div className="text-3xl font-extrabold text-slate-900 mt-2">{reviewCount}</div>
-          <p className="text-[11px] text-amber-700 mt-1 font-medium">Conflicting / outdated proof</p>
+          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{reviewCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-amber-700 mt-0.5 sm:mt-1 font-medium">Conflicting / outdated proof</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-rose-200 bg-white shadow-xs">
+        <div className="p-3.5 sm:p-5 rounded-2xl border border-rose-200 bg-white shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-800">Ineligible</span>
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-800">Ineligible</span>
             <XCircle className="w-4 h-4 text-rose-600" />
           </div>
-          <div className="text-3xl font-extrabold text-slate-900 mt-2">{ineligibleCount}</div>
-          <p className="text-[11px] text-rose-700 mt-1 font-medium">Statutory criteria mismatch</p>
+          <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1.5 sm:mt-2">{ineligibleCount}</div>
+          <p className="text-[10px] sm:text-[11px] text-rose-700 mt-0.5 sm:mt-1 font-medium">Statutory criteria mismatch</p>
         </div>
       </div>
 
       {/* SCHEME-BY-SCHEME ANALYSIS TABLE */}
       <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
-        <div className="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h3 className="text-base font-bold text-slate-900 tracking-tight">Scheme Evaluation Matrix</h3>
+            <h3 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight">Scheme Evaluation Matrix</h3>
             <p className="text-xs text-slate-500 mt-0.5">Click any row to open rule-by-rule explainability and citations.</p>
           </div>
-          <span className="text-xs text-slate-600 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 font-bold">
+          <span className="text-xs text-slate-600 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 font-bold self-start sm:self-auto">
             {schemes.length} Schemes Analyzed
           </span>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+          <table className="w-full min-w-[640px] text-left text-xs">
             <thead className="bg-slate-50 text-slate-600 uppercase font-semibold border-b border-slate-200">
               <tr>
                 <th className="py-3.5 px-4">Scheme</th>

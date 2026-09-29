@@ -53,23 +53,22 @@ export const HeaderNav = () => {
     <nav className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 gap-3 sm:gap-4">
-          {/* Brand Logo (myScheme official style) */}
-          <NavLink to="/dashboard" className="flex items-center gap-3 shrink-0 group">
-            {/* Gov Emblem / Green Seal */}
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-700 to-green-600 flex items-center justify-center text-white shadow-sm border border-emerald-500/30">
-              <Landmark className="w-5 h-5 text-white" />
+          {/* Brand Logo: DevKo Independent Platform */}
+          <NavLink to="/dashboard" className="flex items-center gap-2.5 shrink-0 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-green-500 flex items-center justify-center text-white shadow-sm border border-emerald-500/20">
+              <Compass className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-                  my<span className="text-emerald-700">Scheme</span>
+                <span className="text-xl font-extrabold text-slate-900 tracking-tight">
+                  Dev<span className="text-emerald-700">Ko</span>
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 uppercase">
-                  Assistant
+                <span className="text-[10px] px-1.5 py-0.2 rounded font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 uppercase">
+                  Schemes
                 </span>
               </div>
-              <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
-                National Policy & Scheme Discovery Platform
+              <p className="text-[10px] text-slate-500 font-medium hidden sm:block">
+                Independent Policy & Eligibility Intelligence
               </p>
             </div>
           </NavLink>

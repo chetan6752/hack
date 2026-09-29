@@ -62,7 +62,7 @@ export const ProfilePage = () => {
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
             <UserCheck className="w-7 h-7 text-emerald-700" />
-            <span>Applicant Profile (MeriPehchaan Linked)</span>
+            <span>Applicant Profile & Parameters</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
             The structured source of truth used by the deterministic eligibility engine.

@@ -10,23 +10,23 @@ export const SchemeCard = ({ scheme, isRecommended = false }) => {
   const isBookmarked = bookmarkedSchemes.includes(scheme.id);
 
   return (
-    <div className={`relative flex flex-col justify-between rounded-2xl bg-white border transition-all duration-200 p-6 shadow-xs hover:shadow-card ${
+    <div className={`relative flex flex-col justify-between rounded-2xl bg-white border transition-all duration-200 p-4 sm:p-6 shadow-xs hover:shadow-card min-w-0 ${
       isRecommended
         ? 'border-emerald-300 ring-1 ring-emerald-200/80 bg-gradient-to-b from-emerald-50/20 to-white'
         : 'border-slate-200 hover:border-emerald-400'
     }`}>
       {/* Top Meta Header */}
       <div>
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
+        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-3">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 min-w-0">
+            <span className="text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">
               {scheme.level}
             </span>
-            <span className="text-[11px] font-medium text-slate-500">
+            <span className="text-[10px] sm:text-[11px] font-medium text-slate-500">
               {scheme.category}
             </span>
             {isRecommended && (
-              <span className="flex items-center gap-1 text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 border border-emerald-300">
+              <span className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-900 border border-emerald-300">
                 <Sparkles className="w-3 h-3 text-emerald-700" />
                 {scheme.relevanceScore}% Match
               </span>
@@ -35,7 +35,7 @@ export const SchemeCard = ({ scheme, isRecommended = false }) => {
 
           <button
             onClick={() => toggleBookmark(scheme.id)}
-            className={`p-1.5 rounded-lg border transition-smooth ${
+            className={`p-1.5 rounded-lg border transition-smooth shrink-0 ${
               isBookmarked
                 ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
                 : 'border-slate-200 text-slate-400 hover:text-slate-700 hover:bg-slate-50'
@@ -47,7 +47,7 @@ export const SchemeCard = ({ scheme, isRecommended = false }) => {
         </div>
 
         {/* Scheme Title & Dept */}
-        <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-800 transition-smooth">
+        <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-emerald-800 transition-smooth">
           {scheme.name}
         </h3>
         <p className="mt-1 text-xs text-slate-500 flex items-center gap-1.5">
@@ -56,17 +56,17 @@ export const SchemeCard = ({ scheme, isRecommended = false }) => {
         </p>
 
         {/* Short description */}
-        <p className="mt-3 text-xs text-slate-600 leading-relaxed line-clamp-2">
+        <p className="mt-2.5 sm:mt-3 text-xs text-slate-600 leading-relaxed line-clamp-2">
           {scheme.description}
         </p>
       </div>
 
       {/* Benefits & Status Matrix */}
-      <div className="mt-5 pt-4 border-t border-slate-100">
-        <div className="flex items-center justify-between mb-4">
+      <div className="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-slate-100">
+        <div className="flex items-center justify-between mb-3.5 sm:mb-4 gap-2">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Estimated Benefit</span>
-            <div className="text-xl font-extrabold text-emerald-700 tracking-tight">
+            <div className="text-lg sm:text-xl font-extrabold text-emerald-700 tracking-tight">
               {scheme.benefit}
             </div>
           </div>
@@ -76,19 +76,19 @@ export const SchemeCard = ({ scheme, isRecommended = false }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-xs text-slate-600 mb-4 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+        <div className="flex items-center justify-between text-[11px] sm:text-xs text-slate-600 mb-3.5 sm:mb-4 bg-slate-50 p-2 sm:p-2.5 rounded-xl border border-slate-200">
           <div className="flex items-center gap-1.5">
             <FileCheck className="w-3.5 h-3.5 text-emerald-600" />
             <span>{scheme.uploadedDocsCount}/{scheme.requiredDocsCount} Docs ready</span>
           </div>
-          <span className="text-[11px] text-slate-400">Verified: {scheme.lastVerified}</span>
+          <span className="text-[10px] sm:text-[11px] text-slate-400">Verified: {scheme.lastVerified}</span>
         </div>
 
         {/* CTA Button */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate(`/schemes/${scheme.id}`)}
-            className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-smooth"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition-smooth"
           >
             <span>View Scheme & Eligibility</span>
             <ArrowRight className="w-3.5 h-3.5" />

@@ -58,7 +58,7 @@ export const MissingDocsPage = () => {
         </div>
 
         {/* Overall Completion */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs min-w-[280px]">
+        <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs w-full sm:w-auto sm:min-w-[280px]">
           <div className="flex justify-between items-center text-xs mb-1.5">
             <span className="font-semibold text-slate-700">Overall Completion</span>
             <span className="font-bold text-emerald-700 font-mono">
@@ -70,15 +70,15 @@ export const MissingDocsPage = () => {
       </div>
 
       {/* PRIORITY SECTION: “What should I upload next?” */}
-      <section className="rounded-2xl border border-amber-200 bg-amber-50/40 p-6 space-y-4">
-        <div className="flex items-center justify-between">
+      <section className="rounded-2xl border border-amber-200 bg-amber-50/40 p-4 sm:p-6 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-600" />
-            <h2 className="text-base font-bold text-slate-900 tracking-tight">
+            <Sparkles className="w-5 h-5 text-amber-600 shrink-0" />
+            <h2 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight">
               What should I upload next? (Highest Benefit Unlock)
             </h2>
           </div>
-          <span className="text-xs text-amber-800 font-mono font-bold">
+          <span className="text-[11px] sm:text-xs text-amber-800 font-mono font-bold">
             Ranked by Subsidy Potential
           </span>
         </div>
@@ -116,15 +116,15 @@ export const MissingDocsPage = () => {
 
       {/* MASTER DOCUMENT AUDIT TABLE */}
       <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs">
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+        <div className="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="text-base font-bold text-slate-900 tracking-tight">Full Applicant Document Dossier</h3>
+            <h3 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight">Full Applicant Document Dossier</h3>
             <p className="text-xs text-slate-500 mt-0.5">Categorized requirements across Identity, Income, Business, Bank, and Certificates.</p>
           </div>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+          <table className="w-full min-w-[580px] text-left text-xs">
             <thead className="bg-slate-50 text-slate-600 uppercase font-semibold border-b border-slate-200">
               <tr>
                 <th className="py-3 px-4">Document Name</th>

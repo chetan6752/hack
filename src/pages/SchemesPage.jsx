@@ -90,18 +90,18 @@ export const SchemesPage = () => {
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
             <Compass className="w-7 h-7 text-emerald-700" />
-            <span>Find Government Schemes</span>
+            <span>Find Schemes & Subsidies</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Discover verified Central and State government schemes matched against your profile.
+            Discover verified Central and State programs matched against your enterprise profile.
           </p>
         </div>
 
         {/* Top Toggle: Recommended for me vs Browse all */}
-        <div className="flex items-center rounded-xl bg-slate-100 p-1 border border-slate-200">
+        <div className="flex items-center rounded-xl bg-slate-100 p-1 border border-slate-200 w-full sm:w-auto justify-center">
           <button
             onClick={() => setActiveTab('recommended')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-smooth flex items-center gap-1.5 ${
+            className={`flex-1 sm:flex-initial px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-[11px] sm:text-xs font-bold transition-smooth flex items-center justify-center gap-1.5 ${
               activeTab === 'recommended'
                 ? 'bg-emerald-700 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -112,7 +112,7 @@ export const SchemesPage = () => {
           </button>
           <button
             onClick={() => setActiveTab('all')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-smooth ${
+            className={`flex-1 sm:flex-initial px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-[11px] sm:text-xs font-bold transition-smooth text-center ${
               activeTab === 'all'
                 ? 'bg-emerald-700 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
