@@ -20,7 +20,7 @@ export const SchemeDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { schemes, bookmarkedSchemes, toggleBookmark } = useApp();
+  const { schemes, bookmarkedSchemes, toggleBookmark, addTrackingApplication } = useApp();
 
   const scheme = schemes.find((s) => s.id === id) || schemes[0];
   const isBookmarked = bookmarkedSchemes.includes(scheme.id);
@@ -28,10 +28,10 @@ export const SchemeDetailPage = () => {
   const initialTab = searchParams.get('tab') || 'eligibility';
   const [activeTab, setActiveTab] = useState(initialTab);
 
-  useEffect(() => {
-    const tabParam = searchParams.get('tab');
-    if (tabParam) setActiveTab(tabParam);
-  }, [searchParams]);
+  const handleTrackSubmit = () => {
+    addTrackingApplication(scheme);
+    navigate('/tracking');
+  };
 
   const tabs = [
     { id: 'overview', label: '1. Overview' },
@@ -82,7 +82,7 @@ export const SchemeDetailPage = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
             <button
               onClick={() => toggleBookmark(scheme.id)}
               className={`p-3 rounded-xl border transition-smooth ${
@@ -96,11 +96,18 @@ export const SchemeDetailPage = () => {
             </button>
 
             <button
+              onClick={handleTrackSubmit}
+              className="rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white text-xs font-bold px-4 py-3 shadow-xs transition-smooth flex items-center gap-2"
+            >
+              <span>Track Application</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            <button
               onClick={() => navigate('/application-guide')}
-              className="rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-4 py-3 shadow-xs transition-smooth flex items-center gap-2"
+              className="rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold px-4 py-3 shadow-2xs transition-smooth flex items-center gap-2"
             >
               <span>Application Guide</span>
-              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -278,7 +285,7 @@ export const SchemeDetailPage = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 px-3 py-1.5 rounded-lg shadow-xs transition-smooth"
             >
-              <span>Official Portal (Demo Link)</span>
+              <span>Open Official Portal</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

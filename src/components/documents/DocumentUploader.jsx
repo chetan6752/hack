@@ -35,7 +35,7 @@ export const DocumentUploader = ({ onUploadSuccess }) => {
     }
   };
 
-  const handleSimulateUpload = (docType = 'Income Certificate', customFileName = null, customSize = '1.9 MB') => {
+  const handleSimulateUpload = (docType = 'CA Turnover Certificate', customFileName = null, customSize = '1.8 MB') => {
     setIsProcessing(true);
     setProcessingStage(0);
     setExtractionResult(null);
@@ -51,39 +51,123 @@ export const DocumentUploader = ({ onUploadSuccess }) => {
         setProcessingStage(4);
         setIsProcessing(false);
 
-        const isIncome = docType.toLowerCase().includes('income');
-        const result = {
-          id: `doc-${Date.now()}`,
-          name: customFileName ? customFileName.replace(/\.[^/.]+$/, '') : (isIncome ? 'Income Certificate (FY 2025–26)' : 'GST 3B Return Q1 2026'),
-          fileName: customFileName || (isIncome ? 'Income_Certificate_Verified_FY25_26.pdf' : 'GST_3B_Return_Q1_2026.pdf'),
-          category: selectedCategory,
-          fileSize: customSize,
-          uploadedAt: 'Just now',
-          status: 'Verified',
-          expiryDate: '31 Mar 2027',
-          confidence: '99.2%',
-          sourceRef: 'Digital Signature & Parameter Hash Validated',
-          extractedFields: isIncome ? {
-            "Income detected": "₹3,80,000",
-            "Financial year": "2025–26",
-            "Name matched": "Yes (Rahul Sharma)",
-            "Issuing Officer": "Tehsildar Haveli, Pune",
-            "Digital Signature": "Verified (Class 3 SHA256)"
-          } : {
-            "GSTIN": "27ABCPS1234F1Z5",
-            "Tax Period": "Q1 2026 (Apr–Jun)",
-            "Gross Turnover": "₹18,00,000",
-            "Filing Status": "Filed & Active",
-            "Tax Paid": "₹1,62,000"
-          },
-          verificationNotes: "Document parsed and field values bound to applicant profile."
-        };
+        const lowerType = (docType || '').toLowerCase();
+        let result;
+
+        if (lowerType.includes('ca') || lowerType.includes('turnover') || lowerType.includes('audit')) {
+          result = {
+            id: `doc-${Date.now()}`,
+            name: 'Latest FY 2025-26 CA Turnover Certificate',
+            fileName: 'CA_Turnover_Certificate_FY25_26.pdf',
+            category: 'Business',
+            fileSize: customSize || '1.8 MB',
+            uploadedAt: 'Just now',
+            status: 'Verified',
+            expiryDate: '31 Mar 2027',
+            confidence: '99.4%',
+            sourceRef: 'ICAI UDIN Digital Verification Gateway',
+            extractedFields: {
+              "Turnover Certified": "₹18,00,000",
+              "Financial Year": "2025–26",
+              "ICAI UDIN": "26048291AAAA1029",
+              "Audit Status": "Unqualified / Clean Opinion",
+              "CA Membership": "FCA-048291 (Pune)",
+              "Digital Seal": "Verified (SHA-256 Valid)"
+            },
+            verificationNotes: "Audit certificate verified via ICAI portal. Clears administrative discrepancy hold."
+          };
+        } else if (lowerType.includes('gst') || lowerType.includes('tax')) {
+          result = {
+            id: `doc-${Date.now()}`,
+            name: 'GST 3B Quarterly Return (Latest Q1 2026)',
+            fileName: 'GST_3B_Return_Q1_2026.pdf',
+            category: 'Business',
+            fileSize: customSize || '2.1 MB',
+            uploadedAt: 'Just now',
+            status: 'Verified',
+            expiryDate: '30 Sep 2026',
+            confidence: '99.8%',
+            sourceRef: 'GSTN Government Gateway API',
+            extractedFields: {
+              "GSTIN": "27ABCPS1234F1Z5",
+              "Filing Period": "Q1 FY 2026-27 (Apr–Jun)",
+              "Gross Supplies": "₹18,00,000",
+              "Tax Paid": "₹1,62,000",
+              "ARN Reference": "AA270626019284F",
+              "Filing Status": "Active & Verified"
+            },
+            verificationNotes: "Quarterly return confirmed active on GST portal with matched turnover."
+          };
+        } else if (lowerType.includes('dpiit') || lowerType.includes('startup')) {
+          result = {
+            id: `doc-${Date.now()}`,
+            name: 'DPIIT Startup Recognition Certificate',
+            fileName: 'DPIIT_Recognition_Certificate.pdf',
+            category: 'Certificates',
+            fileSize: customSize || '1.4 MB',
+            uploadedAt: 'Just now',
+            status: 'Verified',
+            expiryDate: '14 Aug 2031',
+            confidence: '99.1%',
+            sourceRef: 'Startup India DPIIT National Portal',
+            extractedFields: {
+              "DPIIT Certificate No": "DIPP-MH-2026-9821",
+              "Entity Name": "TechnoNova Engineering Solutions",
+              "Incorporation Category": "Micro Manufacturing",
+              "Tax Exemption (80-IAC)": "Eligible / Recommended",
+              "Certificate Validity": "Active (10 Years)"
+            },
+            verificationNotes: "DPIIT recognition validated for grant disbursement eligibility."
+          };
+        } else if (lowerType.includes('income')) {
+          result = {
+            id: `doc-${Date.now()}`,
+            name: 'Income Certificate (FY 2025–26)',
+            fileName: customFileName || 'Income_Certificate_Verified_FY25_26.pdf',
+            category: 'Income',
+            fileSize: customSize || '1.5 MB',
+            uploadedAt: 'Just now',
+            status: 'Verified',
+            expiryDate: '31 Mar 2027',
+            confidence: '99.2%',
+            sourceRef: 'Aaple Sarkar / Revenue Department',
+            extractedFields: {
+              "Income Detected": "₹3,80,000",
+              "Financial Year": "2025–26",
+              "Applicant Name": "Rahul Sharma",
+              "Issuing Officer": "Tehsildar Haveli, Pune",
+              "Digital Signature": "Verified (Class 3 SHA256)"
+            },
+            verificationNotes: "Document parsed and field values bound to applicant profile."
+          };
+        } else {
+          result = {
+            id: `doc-${Date.now()}`,
+            name: customFileName ? customFileName.replace(/\.[^/.]+$/, '') : 'Verified Supplementary Proof',
+            fileName: customFileName || 'Verified_Document.pdf',
+            category: selectedCategory,
+            fileSize: customSize || '1.9 MB',
+            uploadedAt: 'Just now',
+            status: 'Verified',
+            expiryDate: '31 Dec 2027',
+            confidence: '98.7%',
+            sourceRef: 'Official Department Registry',
+            extractedFields: {
+              "File Extracted": customFileName || "Document.pdf",
+              "Category": selectedCategory,
+              "Applicant Matched": "Yes (Rahul Sharma)",
+              "OCR Verification": "Passed (Tamper Free)",
+              "Digital Hash": "0x7F9B...8842"
+            },
+            verificationNotes: "Statutory document verified and bound to applicant parameter dossier."
+          };
+        }
 
         setExtractionResult(result);
         addDocument(result);
         if (onUploadSuccess) onUploadSuccess(result);
       }
-    }, 600);
+    }, 450);
   };
 
   return (
@@ -151,19 +235,28 @@ export const DocumentUploader = ({ onUploadSuccess }) => {
 
               <button
                 type="button"
-                onClick={() => handleSimulateUpload('Income Certificate')}
-                className="inline-flex items-center gap-2 rounded-xl bg-emerald-50 border border-emerald-300 px-4 py-2.5 text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition-smooth"
+                onClick={() => handleSimulateUpload('CA Turnover Certificate')}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-amber-50 border border-amber-300 px-3.5 py-2 text-xs font-bold text-amber-900 hover:bg-amber-100 transition-smooth shadow-2xs"
               >
-                <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-                <span>Demo OCR (Income Certificate)</span>
+                <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                <span>Upload CA Turnover Audit (Unlocks ₹1.2L)</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => handleSimulateUpload('GST Return')}
-                className="inline-flex items-center gap-2 rounded-xl bg-white border border-slate-300 px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-smooth"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-300 px-3.5 py-2 text-xs font-bold text-emerald-900 hover:bg-emerald-100 transition-smooth shadow-2xs"
               >
-                <span>Upload GST-3B (Missing Doc)</span>
+                <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Upload GST-3B (Unlocks Seed Grant)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSimulateUpload('DPIIT Certificate')}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white border border-slate-300 px-3.5 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-smooth shadow-2xs"
+              >
+                <span>Upload DPIIT Certificate</span>
               </button>
             </div>
           </div>

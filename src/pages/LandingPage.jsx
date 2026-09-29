@@ -27,9 +27,11 @@ import {
   Compass
 } from 'lucide-react';
 import { StatusBadge } from '../components/common/StatusBadge';
+import { useApp } from '../context/AppContext';
 
 export const LandingPage = () => {
   const navigate = useNavigate();
+  const { updateApplicant } = useApp();
 
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -91,6 +93,11 @@ export const LandingPage = () => {
 
   const handleQuickMatch = (e) => {
     e.preventDefault();
+    updateApplicant({
+      state: selectedState,
+      age: parseInt(selectedAge) || 29,
+      occupation: selectedOccupation
+    });
     navigate('/eligibility');
   };
 

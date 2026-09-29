@@ -25,7 +25,7 @@ export const Topbar = () => {
 
       {/* Right side: Demo Switcher + Notifications + Profile */}
       <div className="flex items-center gap-3">
-        {/* Hackathon Demo Mode Pill */}
+        {/* Verified Persona Pill */}
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-300 text-xs font-semibold">
           <Sparkles className="w-3.5 h-3.5 text-blue-400 animate-spin" style={{ animationDuration: '4s' }} />
           <span>Demo Persona: Rahul (MSME)</span>

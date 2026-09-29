@@ -17,7 +17,7 @@ import { useApp } from '../context/AppContext';
 
 export const EligibilityPage = () => {
   const navigate = useNavigate();
-  const { schemes } = useApp();
+  const { schemes, runManualEvaluation, isEvaluating, addTrackingApplication } = useApp();
   const [selectedScheme, setSelectedScheme] = useState(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
@@ -31,17 +31,36 @@ export const EligibilityPage = () => {
     setIsDrawerOpen(true);
   };
 
+  const handleTrackSubmit = (scheme) => {
+    addTrackingApplication(scheme);
+    setIsDrawerOpen(false);
+    navigate('/tracking');
+  };
+
   return (
     <div className="space-y-8 animate-fade-in">
-      {/* Header */}
-      <div className="border-b border-slate-200 pb-6">
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
-          <FileCheck2 className="w-7 h-7 text-emerald-700" />
-          <span>Eligibility Decision Center</span>
-        </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
-          Every result is evaluated against verified statutory policy rules and applicant documents. Zero probabilistic guesswork.
-        </p>
+      {/* Header with Live Evaluator Trigger */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2.5">
+            <span className="p-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200/80 shadow-xs">
+              <FileCheck2 className="w-6 h-6 text-emerald-700" />
+            </span>
+            <span>Eligibility Decision Center</span>
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Every result is evaluated against verified statutory policy rules and applicant documents. Zero probabilistic guesswork.
+          </p>
+        </div>
+
+        <button
+          onClick={runManualEvaluation}
+          disabled={isEvaluating}
+          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white text-xs font-bold px-4 py-2.5 shadow-xs transition-smooth disabled:opacity-75 self-start sm:self-auto cursor-pointer"
+        >
+          <span className={`inline-block ${isEvaluating ? 'animate-spin' : ''}`}>⚡</span>
+          <span>{isEvaluating ? 'Evaluating 48 Rules...' : 'Run Live Rule Evaluation'}</span>
+        </button>
       </div>
 
       {/* SUMMARY PANEL (4 Pillar Cards) */}
@@ -251,16 +270,52 @@ export const EligibilityPage = () => {
                 : 'Review the statutory criterion that failed above to evaluate if your enterprise structure can be updated.'}
             </p>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap items-center gap-2">
+              {selectedScheme.status === 'Eligible' && (
+                <button
+                  onClick={() => handleTrackSubmit(selectedScheme)}
+                  className="rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white text-xs font-bold px-4 py-2 transition-smooth shadow-xs inline-flex items-center gap-1.5"
+                >
+                  <span>Submit & Track Application Dossier</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
+
+              {selectedScheme.status === 'Potentially Eligible' && (
+                <button
+                  onClick={() => {
+                    setIsDrawerOpen(false);
+                    navigate('/documents');
+                  }}
+                  className="rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-4 py-2 transition-smooth shadow-xs inline-flex items-center gap-1.5"
+                >
+                  <span>Upload Required Document</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
+
+              {selectedScheme.status === 'Manual Review' && (
+                <button
+                  onClick={() => {
+                    setIsDrawerOpen(false);
+                    navigate('/review');
+                  }}
+                  className="rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 transition-smooth shadow-xs inline-flex items-center gap-1.5"
+                >
+                  <span>Open Adjudication Center</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   setIsDrawerOpen(false);
                   navigate(`/schemes/${selectedScheme.id}`);
                 }}
-                className="rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-4 py-2 transition-smooth shadow-xs inline-flex items-center gap-1.5"
+                className="rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold px-4 py-2 transition-smooth shadow-2xs inline-flex items-center gap-1.5"
               >
-                <span>Open Scheme Full Page</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span>Scheme Details</span>
+                <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>

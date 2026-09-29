@@ -4,13 +4,15 @@ import {
   Edit3,
   Save,
   Download,
-  Trash2
+  Trash2,
+  RotateCcw
 } from 'lucide-react';
 import { ProgressBar } from '../components/common/ProgressBar';
 import { useApp } from '../context/AppContext';
+import { initialApplicant } from '../data/mockData';
 
 export const ProfilePage = () => {
-  const { applicant, updateApplicant, showToast } = useApp();
+  const { applicant, updateApplicant, resetToDefaultData, showToast } = useApp();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({ ...applicant });
 
@@ -90,11 +92,23 @@ export const ProfilePage = () => {
 
           <button
             onClick={handleExportProfile}
-            className="flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-2.5 transition-smooth"
+            className="flex items-center gap-1.5 rounded-xl bg-emerald-50 border border-emerald-200 hover:bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-2.5 transition-smooth shadow-2xs"
             title="Export profile JSON"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export</span>
+          </button>
+
+          <button
+            onClick={() => {
+              resetToDefaultData();
+              setFormData(initialApplicant);
+            }}
+            className="flex items-center gap-1.5 rounded-xl bg-slate-50 border border-slate-200 hover:bg-slate-100 text-slate-700 text-xs font-bold px-3 py-2.5 transition-smooth shadow-2xs"
+            title="Reset profile data to standard verified baseline"
+          >
+            <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
+            <span>Reset Baseline</span>
           </button>
         </div>
       </div>
